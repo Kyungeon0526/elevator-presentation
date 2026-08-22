@@ -243,6 +243,88 @@ body {
     border-bottom: none;
 }
 
+/* 동영상 컨테이너 */
+.video-container {
+    margin-top: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.video-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.video-header h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.video-note {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    background: #f8fafc;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.video-wrapper video {
+    width: 100%;
+    display: none;
+    border-radius: 8px;
+}
+
+.video-wrapper video.active {
+    display: block;
+}
+
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 2rem;
+}
+
+.video-placeholder.hidden {
+    display: none;
+}
+
+.video-placeholder .placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.video-placeholder h4 {
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.video-placeholder p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
 /* 그리드 레이아웃 */
 .content-grid {
     display: grid;

@@ -23,6 +23,10 @@ const webpagePlaceholder = document.getElementById('webpagePlaceholder');
 const phoneIframe = document.getElementById('phoneIframe');
 const phonePlaceholder = document.getElementById('phonePlaceholder');
 
+// 문제 정의 영상
+const problemVideo = document.getElementById('problemVideo');
+const videoPlaceholder = document.getElementById('videoPlaceholder');
+
 // ============================================
 // 웹사이트 URL 설정 (나중에 실제 URL로 변경하세요)
 // ============================================
@@ -33,6 +37,11 @@ const WEBSITE_URL = ''; // 예: 'http://192.168.1.100:8080' 또는 'http://local
 // ============================================
 const WEBPAGE_URL = '';  // 우리가 만든 웹페이지 URL
 const PHONE_URL = '';     // 스마트폰 중계 화면 URL (WebSocket 등)
+
+// ============================================
+// 문제 정의 영상 URL 설정 (나중에 실제 URL로 변경하세요)
+// ============================================
+const VIDEO_URL = ''; // 예: './problem_video.mp4' 또는 './videos/elevator_issue.mp4'
 
 let currentSlide = 0;
 const totalSlides = slides.length;
@@ -240,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateNavItems(0);
     initializeWebsite();
     initializeLiveDemo();
+    initializeVideo();
 });
 
 // 웹사이트 iframe 초기화
@@ -263,6 +273,15 @@ function initializeLiveDemo() {
         phoneIframe.src = PHONE_URL;
         phoneIframe.classList.add('active');
         phonePlaceholder.classList.add('hidden');
+    }
+}
+
+// 문제 정의 영상 초기화
+function initializeVideo() {
+    if (VIDEO_URL && VIDEO_URL.trim() !== '') {
+        problemVideo.src = VIDEO_URL;
+        problemVideo.classList.add('active');
+        videoPlaceholder.classList.add('hidden');
     }
 }
 
@@ -305,6 +324,21 @@ function setLiveDemoUrls(webpageUrl, phoneUrl) {
         phoneIframe.classList.remove('active');
         phonePlaceholder.classList.remove('hidden');
         console.log('스마트폰 URL이 초기화되었습니다.');
+    }
+}
+
+// 문제 정의 영상 URL 동적으로 변경
+function setVideoUrl(url) {
+    if (url && url.trim() !== '') {
+        problemVideo.src = url;
+        problemVideo.classList.add('active');
+        videoPlaceholder.classList.add('hidden');
+        console.log('영상 URL이 설정되었습니다:', url);
+    } else {
+        problemVideo.src = '';
+        problemVideo.classList.remove('active');
+        videoPlaceholder.classList.remove('hidden');
+        console.log('영상 URL이 초기화되었습니다.');
     }
 }
 
