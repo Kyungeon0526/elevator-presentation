@@ -22,9 +22,12 @@
                     <div class="nav-item" data-section="5">기능 2: 층수</div>
                     <div class="nav-item" data-section="6">웹사이트</div>
                     <div class="nav-item" data-section="7">기능 3: 센서</div>
-                    <div class="nav-item" data-section="8">라이브 시연</div>
-                    <div class="nav-item" data-section="9">기대효과</div>
+                    <div class="nav-item" data-section="8">실험 경과</div>
+                    <div class="nav-item" data-section="9">현장 테스트</div>
                     <div class="nav-item" data-section="10">결론</div>
+                    <div class="nav-item" data-section="11">라이브 시연</div>
+                    <div class="nav-item" data-section="12">추후 계획</div>
+                    <div class="nav-item" data-section="13">기대효과</div>
                 </div>
             </nav>
         </div>
@@ -80,18 +83,21 @@
             <div class="slide-content">
                 <h2 class="slide-title">프로젝트 개요</h2>
                 <div class="content-box">
-                    <h3>🎯 프로젝트명</h3>
-                    <p class="highlight">스마트 엘리베이터 자동화 시스템</p>
-
-                    <h3>📋 개요</h3>
-                    <p>ESP32-S3 Sense 카메라를 사용하여 엘리베이터 상황을 감지하고 제어하는 시스템</p>
-
-                    <h3>🎯 목표</h3>
-                    <ul>
-                        <li>닫힘 버튼 자동 누름으로 사용자 불편 해소</li>
-                        <li>실시간 층수 모니터링으로 정보 접근성 향상</li>
-                        <li>실효성 데이터 수집을 통한 성과 검증</li>
+                    <h3 class="highlight">❌ 핵심 문제</h3>
+                    <ul class="problem-list">
+                        <li>위층에서 1층으로 내려가는 중 중간층에서 사람이 내림</li>
+                        <li>더 탈 사람이 없는데도 문이 오래 열려 있음</li>
+                        <li>탑승자가 매번 직접 닫힘 버튼을 눌러야 함</li>
+                        <li>기존 엘리베이터를 직접 개조하기는 어려움</li>
                     </ul>
+
+                    <h3 class="highlight">❓ 핵심 질문</h3>
+                    <p class="highlight question-highlight">기존 엘리베이터를 바꾸지 않고, 상황에 맞게 닫힘 버튼을 보조할 수 없을까?</p>
+
+                    <!-- 요약 이미지 -->
+                    <div class="summary-image-container">
+                        <img src="summary.png" alt="프로젝트 요약" class="summary-image">
+                    </div>
                 </div>
             </div>
         </section>
@@ -129,6 +135,7 @@
         <section class="slide" data-section="4">
             <div class="slide-content">
                 <h2 class="slide-title">기능 1 - 닫힘 버튼 자동 누름</h2>
+                <p class="subtitle">AI 상황 판단 + 닫힘 버튼 보조</p>
                 <div class="content-box">
                     <h3>🔄 작동 원리</h3>
                     <ol>
@@ -138,10 +145,11 @@
                     </ol>
 
                     <h3>✨ 특징</h3>
-                    <ul>
-                        <li>ESP32-S3 Sense 1대로 통합</li>
-                        <li>내장 카메라 사용</li>
-                        <li>서브모터로 정확한 버튼 누름</li>
+                    <ul class="feature-list">
+                        <li>기존 엘리베이터 제어기를 건드리지 않음</li>
+                        <li>사람이 직접 누르던 닫힘 버튼을 장치가 보조</li>
+                        <li>외부에 탑승하려는 사람이 있으면 누르지 않음</li>
+                        <li>판단이 불확실하면 누르지 않음</li>
                     </ul>
                 </div>
             </div>
@@ -150,27 +158,10 @@
         <!-- 섹션 5: 기능 2 - 엘리베이터 층수 디텍팅 -->
         <section class="slide" data-section="5">
             <div class="slide-content">
-                <h2 class="slide-title">기능 2 - 엘리베이터 층수 디텍팅</h2>
+                <h2 class="slide-title">기능 2 - 실시간 층수 확인</h2>
                 <div class="content-box">
                     <h3>📐 방식</h3>
-                    <p class="highlight">7-segment 숫자 인식 (전통적 비전)</p>
-
-                    <h3>⚙️ ESP32 기능</h3>
-                    <ul>
-                        <li>카메라 캡처 (160x120 그레이스케일)</li>
-                        <li>이미지 전처리 (다운샘플링, 이진화)</li>
-                        <li>ROI 추출 (숫자 영역 자동 감지)</li>
-                        <li>7-segment 세그먼트 분석</li>
-                        <li>패턴 매칭으로 0-9 숫자 인식</li>
-                        <li>HTTP API 제공</li>
-                    </ul>
-
-                    <h3>🔌 API 엔드포인트</h3>
-                    <div class="api-list">
-                        <code>GET /api/status</code> - 층수 데이터 (JSON)<br>
-                        <code>GET /api/segments</code> - 세그먼트 분석 결과 (JSON)<br>
-                        <code>GET /capture</code> - 카메라 이미지 (JPEG)
-                    </div>
+                    <p>카메라가 층수를 읽고, 사용자는 웹에서 현재 엘리베이터 위치를 실시간으로 확인한다.</p>
                 </div>
             </div>
         </section>
@@ -227,24 +218,79 @@
         <section class="slide" data-section="7">
             <div class="slide-content">
                 <h2 class="slide-title">기능 3 - 초음파 센서 기반 문 상태 감지</h2>
+                <p class="subtitle">문 개방시간 측정</p>
                 <div class="content-box">
-                    <h3>📡 센서</h3>
-                    <p class="highlight">HC-SR04 초음파</p>
-
                     <h3>🎯 목적</h3>
-                    <p>총 닫힌 횟수 계산 (실효성 데이터)</p>
+                    <p>실제 제품의 효율성 및 유용성 확보</p>
 
                     <h3>⚙️ 기능</h3>
-                    <ul>
-                        <li>문 열림/닫힘 여부 판단</li>
-                        <li>총 닫힌 횟수 계산</li>
+                    <ul class="feature-list">
+                        <li>1회 정차당 문 개방시간</li>
+                        <li>하루 정차 횟수</li>
+                        <li>평균 문 개방시간</li>
+                        <li>누적 문 개방시간</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- 섹션 8: 라이브 시연 -->
+        <!-- 섹션 8: 실험 경과 -->
         <section class="slide" data-section="8">
+            <div class="slide-content">
+                <h2 class="slide-title">실험 경과</h2>
+                <div class="content-box">
+                    <!-- 실험 경과 이미지 -->
+                    <div class="photo-container">
+                        <img src="캡처.PNG" alt="실험 경과" class="photo-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 9: 현장 테스트 -->
+        <section class="slide" data-section="9">
+            <div class="slide-content">
+                <h2 class="slide-title">현장 테스트</h2>
+                <p class="subtitle">한미르관</p>
+                <div class="content-box">
+                    <h3>📍 테스트 장소</h3>
+                    <p>한미르관 실제 엘리베이터에 장치 설치 및 테스트 진행</p>
+
+                    <h3 class="highlight">📊 A/B 테스트</h3>
+                    <p>기존 엘리베이터와 스마트 애드온 적용 후의 문 개방시간 비교</p>
+
+                    <!-- 현장 테스트 사진 -->
+                    <div class="photo-container">
+                        <img src="photography.png" alt="현장 테스트 사진" class="photo-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 9: 결론 -->
+        <section class="slide" data-section="9">
+            <div class="slide-content">
+                <h2 class="slide-title">결론</h2>
+                <div class="conclusion-box">
+                    <h3>📝 요약</h3>
+                    <ul>
+                        <li>ESP32-S3 Sense 기반 엘리베이터 자동화 시스템 구현</li>
+                        <li>3가지 핵심 기능 구현: 닫힘 버튼 자동 누름, 층수 디텍팅, 초음파 센서</li>
+                        <li>웹사이트를 통해 실시간 모니터링 가능</li>
+                    </ul>
+
+                    <h3>🚀 다음 단계</h3>
+                    <ul>
+                        <li>실제 엘리베이터 설치 및 튜닝</li>
+                        <li>더 많은 데이터 수집을 통한 개선</li>
+                        <li>확장 가능성 탐색</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 11: 라이브 시연 -->
+        <section class="slide" data-section="11">
             <div class="slide-content">
                 <h2 class="slide-title">라이브 시연</h2>
 
@@ -295,8 +341,22 @@
             </div>
         </section>
 
-        <!-- 섹션 9: 기대효과 -->
-        <section class="slide" data-section="9">
+        <!-- 섹션 12: 추후 계획 -->
+        <section class="slide" data-section="12">
+            <div class="slide-content">
+                <h2 class="slide-title">추후 계획</h2>
+                <div class="content-box">
+                    <h3>🏫 기숙사 협의 미팅 진행 완료</h3>
+                    <!-- 기숙사 사진 -->
+                    <div class="photo-container">
+                        <img src="dormitory.jpg" alt="기숙사" class="photo-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 13: 기대효과 -->
+        <section class="slide" data-section="13">
             <div class="slide-content">
                 <h2 class="slide-title">기대효과</h2>
                 <div class="benefits-section">
@@ -341,28 +401,11 @@
                             <li>데이터 기반 개선 가능</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 섹션 10: 결론 -->
-        <section class="slide" data-section="10">
-            <div class="slide-content">
-                <h2 class="slide-title">결론</h2>
-                <div class="conclusion-box">
-                    <h3>📝 요약</h3>
-                    <ul>
-                        <li>ESP32-S3 Sense 기반 엘리베이터 자동화 시스템 구현</li>
-                        <li>3가지 핵심 기능 구현: 닫힘 버튼 자동 누름, 층수 디텍팅, 초음파 센서</li>
-                        <li>웹사이트를 통해 실시간 모니터링 가능</li>
-                    </ul>
-
-                    <h3>🚀 다음 단계</h3>
-                    <ul>
-                        <li>실제 엘리베이터 설치 및 튜닝</li>
-                        <li>더 많은 데이터 수집을 통한 개선</li>
-                        <li>확장 가능성 탐색</li>
-                    </ul>
+                    <!-- 결과 이미지 -->
+                    <div class="photo-container">
+                        <img src="result.png" alt="실험 결과" class="photo-image">
+                    </div>
                 </div>
             </div>
         </section>
@@ -383,9 +426,12 @@
             <span class="dot" data-index="7"></span>
             <span class="dot" data-index="8"></span>
             <span class="dot" data-index="9"></span>
+            <span class="dot" data-index="10"></span>
+            <span class="dot" data-index="11"></span>
+            <span class="dot" data-index="12"></span>
         </div>
         <button class="nav-btn next" id="nextBtn" title="다음 슬라이드 (→)">▶</button>
-        <div class="progress" id="progress">1/10</div>
+        <div class="progress" id="progress">1/13</div>
     </footer>
 
     <!-- 발표자 노트 (기본 숨김) -->
