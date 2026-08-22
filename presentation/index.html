@@ -10,30 +10,61 @@
 <body>
     <!-- 헤더 -->
     <header class="presentation-header">
-        <div class="logo">🏢</div>
-        <div class="header-content">
-            <h1>스마트 엘리베이터 자동화 시스템</h1>
-            <nav class="header-nav" id="headerNav">
-                <div class="nav-menu" id="navMenu">
-                    <div class="nav-item" data-section="1">문제 정의</div>
-                    <div class="nav-item" data-section="2">프로젝트 개요</div>
-                    <div class="nav-item" data-section="3">하드웨어</div>
-                    <div class="nav-item" data-section="4">기능 1: 버튼</div>
-                    <div class="nav-item" data-section="5">기능 2: 층수</div>
-                    <div class="nav-item" data-section="6">웹사이트</div>
-                    <div class="nav-item" data-section="7">기능 3: 센서</div>
-                    <div class="nav-item" data-section="8">실험 경과</div>
-                    <div class="nav-item" data-section="9">현장 테스트</div>
-                    <div class="nav-item" data-section="10">결론</div>
-                    <div class="nav-item" data-section="11">라이브 시연</div>
-                    <div class="nav-item" data-section="12">추후 계획</div>
-                    <div class="nav-item" data-section="13">기대효과</div>
-                </div>
-            </nav>
+        <div class="logo-section">
+            <div class="logo">🏢</div>
+            <div class="logo-text">
+                <span class="logo-main">Smart Elevator</span>
+                <span class="logo-sub">Automation System</span>
+            </div>
         </div>
+
+        <nav class="header-nav" id="headerNav">
+            <div class="nav-menu" id="navMenu">
+                <button class="nav-item" data-section="1">문제 정의</button>
+                <button class="nav-item" data-section="2">프로젝트 개요</button>
+                <button class="nav-item" data-section="3">하드웨어</button>
+                <button class="nav-item" data-section="4">기능 1</button>
+                <button class="nav-item" data-section="5">기능 2</button>
+                <button class="nav-item" data-section="6">웹사이트</button>
+                <button class="nav-item" data-section="7">기능 3</button>
+                <button class="nav-item" data-section="8">실험 경과</button>
+                <button class="nav-item" data-section="9">현장 테스트</button>
+                <button class="nav-item" data-section="10">결론</button>
+                <button class="nav-item" data-section="11">라이브 시연</button>
+                <button class="nav-item" data-section="12">추후 계획</button>
+                <button class="nav-item" data-section="13">기대효과</button>
+            </div>
+        </nav>
+
         <div class="header-actions">
-            <button class="icon-btn" id="notesBtn" title="발표자 노트 (N)">📝</button>
-            <button class="icon-btn" id="fullscreenBtn" title="풀스크린 (F)">⛶</button>
+            <button class="action-btn" id="hamburgerBtn" title="메뉴">☰</button>
+            <button class="action-btn" id="notesBtn" title="발표자 노트 (N)">📝</button>
+            <button class="action-btn" id="fullscreenBtn" title="풀스크린 (F)">⛶</button>
+        </div>
+
+        <!-- 모바일 메뉴 오버레이 -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu">
+                <div class="mobile-menu-header">
+                    <span class="mobile-menu-title">메뉴</span>
+                    <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+                </div>
+                <div class="mobile-nav-items" id="mobileNavItems">
+                    <button class="mobile-nav-item" data-section="1">문제 정의</button>
+                    <button class="mobile-nav-item" data-section="2">프로젝트 개요</button>
+                    <button class="mobile-nav-item" data-section="3">하드웨어</button>
+                    <button class="mobile-nav-item" data-section="4">기능 1</button>
+                    <button class="mobile-nav-item" data-section="5">기능 2</button>
+                    <button class="mobile-nav-item" data-section="6">웹사이트</button>
+                    <button class="mobile-nav-item" data-section="7">기능 3</button>
+                    <button class="mobile-nav-item" data-section="8">실험 경과</button>
+                    <button class="mobile-nav-item" data-section="9">현장 테스트</button>
+                    <button class="mobile-nav-item" data-section="10">결론</button>
+                    <button class="mobile-nav-item" data-section="11">라이브 시연</button>
+                    <button class="mobile-nav-item" data-section="12">추후 계획</button>
+                    <button class="mobile-nav-item" data-section="13">기대효과</button>
+                </div>
+            </div>
         </div>
     </header>
 

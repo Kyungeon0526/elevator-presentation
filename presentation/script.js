@@ -191,7 +191,48 @@ document.addEventListener('keydown', (e) => {
         case 'End':
             showSlide(totalSlides - 1);
             break;
+        case 'Escape':
+            closeMobileMenu();
+            break;
     }
+});
+
+// 모바일 메뉴 기능
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+function openMobileMenu() {
+    mobileMenuOverlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    mobileMenuOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+// 햄버거 버튼 클릭
+hamburgerBtn.addEventListener('click', openMobileMenu);
+
+// 닫기 버튼 클릭
+mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+// 오버레이 클릭 시 닫기
+mobileMenuOverlay.addEventListener('click', (e) => {
+    if (e.target === mobileMenuOverlay) {
+        closeMobileMenu();
+    }
+});
+
+// 모바일 메뉴 아이템 클릭
+mobileNavItems.forEach((item) => {
+    const section = parseInt(item.dataset.section) - 1;
+    item.addEventListener('click', () => {
+        showSlide(section);
+        closeMobileMenu();
+    });
 });
 
 // 도트 클릭 이벤트
@@ -203,10 +244,12 @@ dots.forEach((dot, index) => {
 
 // 헤더 네비게이션 클릭 이벤트
 navItems.forEach((item) => {
-    const section = parseInt(item.dataset.section) - 1;
-    item.addEventListener('click', () => {
-        showSlide(section);
-    });
+    if (item.dataset.section) {
+        const section = parseInt(item.dataset.section) - 1;
+        item.addEventListener('click', () => {
+            showSlide(section);
+        });
+    }
 });
 
 // 풀스크린 변경 감지
