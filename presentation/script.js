@@ -244,12 +244,11 @@ function handleSwipe() {
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
-    showSlide(0);
-    updateButtons(0);
-    updateNavItems(0);
     initializeWebsite();
     initializeLiveDemo();
     initializeVideo();
+    setupScrollEffects();
+    setupNavigation();
 });
 
 // 웹사이트 iframe 초기화
@@ -340,6 +339,40 @@ function setVideoUrl(url) {
         videoPlaceholder.classList.remove('hidden');
         console.log('영상 URL이 초기화되었습니다.');
     }
+}
+
+// 스크롤 효과 설정
+function setupScrollEffects() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    slides.forEach(slide => {
+        observer.observe(slide);
+    });
+}
+
+// 네비게이션 설정
+function setupNavigation() {
+    navItems.forEach(item => {
+        const section = parseInt(item.dataset.section) - 1;
+        item.addEventListener('click', () => {
+            const targetSlide = slides[section];
+            if (targetSlide) {
+                targetSlide.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 }
 
 // 자동 슬라이드 (옵션 - 필요시 주석 해제)
