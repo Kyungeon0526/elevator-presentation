@@ -13,6 +13,27 @@ const notesBody = document.getElementById('notesBody');
 // 헤더 네비게이션
 const navItems = document.querySelectorAll('.nav-item');
 
+// 웹사이트 iframe
+const websiteIframe = document.getElementById('websiteIframe');
+const iframePlaceholder = document.getElementById('iframePlaceholder');
+
+// 라이브 시연 iframe
+const webpageIframe = document.getElementById('webpageIframe');
+const webpagePlaceholder = document.getElementById('webpagePlaceholder');
+const phoneIframe = document.getElementById('phoneIframe');
+const phonePlaceholder = document.getElementById('phonePlaceholder');
+
+// ============================================
+// 웹사이트 URL 설정 (나중에 실제 URL로 변경하세요)
+// ============================================
+const WEBSITE_URL = ''; // 예: 'http://192.168.1.100:8080' 또는 'http://localhost:3000'
+
+// ============================================
+// 라이브 시연 URL 설정 (나중에 실제 URL로 변경하세요)
+// ============================================
+const WEBPAGE_URL = '';  // 우리가 만든 웹페이지 URL
+const PHONE_URL = '';     // 스마트폰 중계 화면 URL (WebSocket 등)
+
 let currentSlide = 0;
 const totalSlides = slides.length;
 
@@ -217,7 +238,75 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(0);
     updateButtons(0);
     updateNavItems(0);
+    initializeWebsite();
+    initializeLiveDemo();
 });
+
+// 웹사이트 iframe 초기화
+function initializeWebsite() {
+    if (WEBSITE_URL && WEBSITE_URL.trim() !== '') {
+        websiteIframe.src = WEBSITE_URL;
+        websiteIframe.classList.add('active');
+        iframePlaceholder.classList.add('hidden');
+    }
+}
+
+// 라이브 시연 iframe 초기화
+function initializeLiveDemo() {
+    if (WEBPAGE_URL && WEBPAGE_URL.trim() !== '') {
+        webpageIframe.src = WEBPAGE_URL;
+        webpageIframe.classList.add('active');
+        webpagePlaceholder.classList.add('hidden');
+    }
+
+    if (PHONE_URL && PHONE_URL.trim() !== '') {
+        phoneIframe.src = PHONE_URL;
+        phoneIframe.classList.add('active');
+        phonePlaceholder.classList.add('hidden');
+    }
+}
+
+// 웹사이트 URL 동적으로 변경
+function setWebsiteUrl(url) {
+    if (url && url.trim() !== '') {
+        websiteIframe.src = url;
+        websiteIframe.classList.add('active');
+        iframePlaceholder.classList.add('hidden');
+        console.log('웹사이트 URL이 설정되었습니다:', url);
+    } else {
+        websiteIframe.src = '';
+        websiteIframe.classList.remove('active');
+        iframePlaceholder.classList.remove('hidden');
+        console.log('웹사이트 URL이 초기화되었습니다.');
+    }
+}
+
+// 라이브 시연 URL 동적으로 변경
+function setLiveDemoUrls(webpageUrl, phoneUrl) {
+    if (webpageUrl && webpageUrl.trim() !== '') {
+        webpageIframe.src = webpageUrl;
+        webpageIframe.classList.add('active');
+        webpagePlaceholder.classList.add('hidden');
+        console.log('웹페이지 URL이 설정되었습니다:', webpageUrl);
+    } else {
+        webpageIframe.src = '';
+        webpageIframe.classList.remove('active');
+        webpagePlaceholder.classList.remove('hidden');
+        console.log('웹페이지 URL이 초기화되었습니다.');
+    }
+
+    if (phoneUrl && phoneUrl.trim() !== '') {
+        phoneIframe.src = phoneUrl;
+        phoneIframe.classList.add('active');
+        phonePlaceholder.classList.add('hidden');
+        console.log('스마트폰 URL이 설정되었습니다:', phoneUrl);
+    } else {
+        phoneIframe.src = '';
+        phoneIframe.classList.remove('active');
+        phonePlaceholder.classList.remove('hidden');
+        console.log('스마트폰 URL이 초기화되었습니다.');
+    }
+}
 
 // 자동 슬라이드 (옵션 - 필요시 주석 해제)
 /*

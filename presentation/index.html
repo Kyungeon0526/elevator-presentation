@@ -15,7 +15,7 @@
             <h1>스마트 엘리베이터 자동화 시스템</h1>
             <nav class="header-nav" id="headerNav">
                 <div class="nav-menu" id="navMenu">
-                    <div class="nav-item" data-section="1">왜 이 프로젝트?</div>
+                    <div class="nav-item" data-section="1">문제 정의</div>
                     <div class="nav-item" data-section="2">프로젝트 개요</div>
                     <div class="nav-item" data-section="3">하드웨어</div>
                     <div class="nav-item" data-section="4">기능 1: 버튼</div>
@@ -37,27 +37,21 @@
     <!-- 슬라이드 컨테이너 -->
     <main class="slides-container">
 
-        <!-- 섹션 1: 왜 이 프로젝트를 하게 됐는지 -->
+        <!-- 섹션 1: 문제 정의 -->
         <section class="slide active" data-section="1">
             <div class="slide-content">
-                <h2 class="slide-title">왜 이 프로젝트를 하게 됐는지</h2>
-                <div class="content-grid">
-                    <div class="problem-box">
-                        <h3>❌ 문제 상황</h3>
-                        <ul>
-                            <li>엘리베이터를 이용할 때 닫힘 버튼을 직접 눌러야 함</li>
-                            <li>짐을 들고 있거나 버튼에서 멀리 서 있으면 불편</li>
-                            <li>엘리베이터 현재 층을 실시간으로 확인하기 어려움</li>
-                        </ul>
-                    </div>
-                    <div class="solution-box">
-                        <h3>✅ 해결 목표</h3>
-                        <ul>
-                            <li>닫힘 버튼을 자동으로 누르는 시스템 구현</li>
-                            <li>실시간 엘리베이터 층수 모니터링</li>
-                            <li>사용자 편의성 향상</li>
-                        </ul>
-                    </div>
+                <h2 class="slide-title">문제 정의</h2>
+                <div class="content-box">
+                    <h3>🏫 문제 발견</h3>
+                    <h3 class="highlight">⏱️ 불필요한 시간 낭비</h3>
+                    <p>승객이 모두 내린 뒤에도 문이 약 <strong>13초 이상 열린 상태</strong>로 유지되는 것이 반복되면 비효율적입니다.</p>
+
+                    <h3 class="highlight">📦 불편한 사용 환경</h3>
+                    <p>특정 상황에서 사용자가 직접 닫힘 버튼을 누르는 것이 불편합니다.</p>
+                    <ul class="situation-list">
+                        <li>🎒 양손에 짐을 들고 탑승한 경우</li>
+                        <li>🤲 손이 자유롭지 않은 경우</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -166,6 +160,25 @@
         <section class="slide" data-section="6">
             <div class="slide-content">
                 <h2 class="slide-title">웹사이트 기능</h2>
+
+                <!-- 웹사이트 미리보기 영역 -->
+                <div class="website-preview">
+                    <div class="preview-header">
+                        <h3>🌐 실시간 웹사이트</h3>
+                        <p class="preview-note">※ 친구가 만든 웹사이트 URL을 아래 스크립트에 입력하면 자동으로 표시됩니다</p>
+                    </div>
+                    <div class="iframe-container">
+                        <!-- src 속성에 웹사이트 URL을 넣으세요 -->
+                        <iframe id="websiteIframe" src="" frameborder="0"></iframe>
+                        <div class="iframe-placeholder" id="iframePlaceholder">
+                            <div class="placeholder-icon">🔗</div>
+                            <h4>웹사이트가 준비 중입니다</h4>
+                            <p>나중에 URL을 입력하면 실제 웹사이트가 표시됩니다</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 기능 설명 -->
                 <div class="content-grid">
                     <div class="website-box">
                         <h3>🖥️ 메인 페이지 (index.html)</h3>
@@ -215,20 +228,50 @@
         <section class="slide" data-section="8">
             <div class="slide-content">
                 <h2 class="slide-title">라이브 시연</h2>
-                <div class="demo-container">
-                    <div class="demo-placeholder">
-                        <div class="demo-icon">📹</div>
-                        <h3>실시간 층수 모니터링 연동</h3>
-                        <p>실제 ESP32가 연결되면 실시간으로 층수가 표시됩니다</p>
+
+                <div class="live-demo-container">
+                    <!-- 왼쪽: 우리가 만든 웹페이지 -->
+                    <div class="demo-panel">
+                        <div class="panel-header">
+                            <h3>🌐 우리가 만든 웹페이지</h3>
+                            <p class="panel-note">실시간 엘리베이터 모니터링</p>
+                        </div>
+                        <div class="panel-content">
+                            <iframe id="webpageIframe" src="" frameborder="0"></iframe>
+                            <div class="panel-placeholder" id="webpagePlaceholder">
+                                <div class="placeholder-icon">🌐</div>
+                                <h4>웹페이지 준비 중</h4>
+                                <p>URL을 설정하면 웹페이지가 표시됩니다</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="demo-info">
-                        <h4>시연 내용</h4>
-                        <ul>
-                            <li>실시간 층수 모니터링 연동</li>
-                            <li>웹캠 영상 표시</li>
-                            <li>숫자 인식 결과 실시간 확인</li>
-                        </ul>
+
+                    <!-- 중앙: 인터랙션 화살표 -->
+                    <div class="interaction-indicator">
+                        <div class="arrow-icon">↔</div>
+                        <p class="interaction-text">인터랙션</p>
                     </div>
+
+                    <!-- 오른쪽: 스마트폰 중계 화면 -->
+                    <div class="demo-panel">
+                        <div class="panel-header">
+                            <h3>📱 스마트폰 중계 화면</h3>
+                            <p class="panel-note">실시간 영상 중계</p>
+                        </div>
+                        <div class="panel-content">
+                            <iframe id="phoneIframe" src="" frameborder="0"></iframe>
+                            <div class="panel-placeholder" id="phonePlaceholder">
+                                <div class="placeholder-icon">📱</div>
+                                <h4>스마트폰 영상 준비 중</h4>
+                                <p>URL을 설정하면 영상이 중계됩니다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-info-box">
+                    <h4>⚙️ 시연 설정</h4>
+                    <p class="demo-note">※ script.js에서 WEBPAGE_URL과 PHONE_URL을 설정하세요</p>
                 </div>
             </div>
         </section>
