@@ -126,6 +126,17 @@
         <div class="container">
             <h2 class="section-title">🎯 프로젝트 개요</h2>
             <div class="overview-content">
+                <!-- 인터뷰 조사 -->
+                <div class="interview-section">
+                    <h3>📋 인터뷰 조사</h3>
+                    <div class="interview-image">
+                        <img src="problem_definition.png" alt="문제 정의 인터뷰 조사">
+                    </div>
+                    <div class="interview-image">
+                        <img src="define_problem.png" alt="문제 정의 분석">
+                    </div>
+                </div>
+
                 <p class="overview-text">하나의 문제 정의에서 출발해 <strong>시스템 제어, 정보 제공, 효과 검증</strong>을 담당하는 3가지 유기적 기능으로 확장</p>
 
                 <div class="system-flow">
@@ -133,7 +144,7 @@
                         <div class="flow-number">1</div>
                         <div class="flow-content">
                             <h4>기능 1 (자동 제어)</h4>
-                            <p>카메라 상황 인식 ➔ 닫힘 버튼 대신 누름</p>
+                            <p>상황 판단 이후 동작</p>
                         </div>
                     </div>
                     <div class="flow-arrow">→</div>
@@ -141,7 +152,7 @@
                         <div class="flow-number">2</div>
                         <div class="flow-content">
                             <h4>기능 2 (정보 제공)</h4>
-                            <p>7세그먼트 층수 인식 ➔ 웹 서비스 공개</p>
+                            <p>실시간 엘리베이터 위치 정보 제공 사이트</p>
                         </div>
                     </div>
                     <div class="flow-arrow">→</div>
@@ -248,33 +259,19 @@
                     </div>
 
                     <div class="feature-details">
-                        <div class="detail-item">
-                            <h4>🔧 현장 무선 조정 시스템 (AP 모드)</h4>
-                            <p><strong>접속 방식:</strong> 장치가 생성한 Wi-Fi AP에 스마트폰 접속 (192.168.4.1)</p>
-                            <ul>
-                                <li>카메라 구도 확인, AI 판정 결과 실시간 검증</li>
-                                <li>서보 각도 조정, 오답 데이터 저장/다운로드</li>
-                            </ul>
+                        <div class="detail-card">
+                            <div class="detail-icon">📱</div>
+                            <h4>현장 무선 조정 시스템</h4>
                         </div>
 
-                        <div class="detail-item warning">
-                            <h4>⚠️ 카메라 각도 오작동 해결</h4>
-                            <p>학습 데이터 촬영 각도와 실제 설치 각도의 차이로 AI 판단이 흔들리는 문제 발생</p>
-                            <ul>
-                                <li>다양한 설치 각도 데이터 추가 수집</li>
-                                <li>AP 화면에 반투명 가이드 라인 제공</li>
-                                <li>임계값·연속 프레임 검증·쿨다운 타임 적용으로 오작동 방지</li>
-                            </ul>
+                        <div class="detail-card warning">
+                            <div class="detail-icon">⚠️</div>
+                            <h4>카메라 각도 오작동 해결</h4>
                         </div>
 
-                        <div class="detail-item success">
-                            <h4>✨ 특징</h4>
-                            <ul>
-                                <li>기존 엘리베이터 제어기를 건드리지 않음</li>
-                                <li>사람이 직접 누르던 닫힘 버튼을 장치가 보조</li>
-                                <li>외부에 탑승하려는 사람이 있으면 누르지 않음</li>
-                                <li>판단이 불확실하면 누르지 않음</li>
-                            </ul>
+                        <div class="detail-card success">
+                            <div class="detail-icon">✨</div>
+                            <h4>기존 시스템 비침해 방지</h4>
                         </div>
                     </div>
                 </div>
@@ -288,56 +285,22 @@
                 </div>
                 <div class="feature-content">
                     <div class="feature-flow">
-                        <div class="flow-step">7세그먼트 층 표시기</div>
-                        <div class="flow-arrow">→</div>
                         <div class="flow-step">ESP32 카메라</div>
                         <div class="flow-arrow">→</div>
-                        <div class="flow-step">Template Matching</div>
+                        <div class="flow-step">전통적 비전 인식</div>
                         <div class="flow-arrow">→</div>
-                        <div class="flow-step">이동 규칙 필터링</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">Supabase</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">웹 표출</div>
+                        <div class="flow-step">실시간 층수 확인 사이트 표출</div>
                     </div>
 
                     <div class="feature-details">
-                        <div class="detail-item highlight">
-                            <h4>🌐 공개 웹 주소</h4>
-                            <a href="https://joony167.github.io/elevator-floor/" target="_blank" class="web-link">
-                                https://joony167.github.io/elevator-floor/
-                                <span class="external-icon">↗</span>
-                            </a>
-                        </div>
-
                         <!-- 실시간 웹사이트 미리보기 -->
-                        <div class="detail-item">
+                        <div class="detail-item web-preview-full">
                             <h4>📺 실시간 웹사이트 미리보기</h4>
                             <div class="web-preview">
                                 <iframe src="https://joony167.github.io/elevator-floor/" frameborder="0" class="web-iframe"></iframe>
                             </div>
                         </div>
 
-                        <div class="detail-item">
-                            <h4>🔧 기압센서 한계 극복</h4>
-                            <p>기압 난류로 인해 불안정한 초기 방식 포기, 층수 표시기 직접 읽는 시각 인식 방식으로 전환</p>
-                        </div>
-
-                        <div class="detail-item">
-                            <h4>📷 설치 환경 고려 (템플릿 매칭)</h4>
-                            <p>정면 촬영은 이용자의 화면을 가리므로 표시기 상단에 카메라를 비스듬히 설치</p>
-                        </div>
-
-                        <div class="detail-item warning">
-                            <h4>🎯 유사 형태(6/8층) 오인식 필터링</h4>
-                            <p>이전 층수 상태값과 엘리베이터 이동 규칙 결합으로 비정상 튀는 값 자동 필터링</p>
-                            <p class="example-text">예시: 5 → 6 → [8 무시] → 7</p>
-                        </div>
-
-                        <div class="detail-item">
-                            <h4>🔧 현장 무선 조정 시스템 (AP 모드)</h4>
-                            <p>층수 표시기 ROI 설정, 층별 템플릿 등록, 인식 기준값 및 일치도 현장 보정</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -373,11 +336,6 @@
                                 <li>평균 문 개방시간</li>
                                 <li>누적 문 개방시간</li>
                             </ul>
-                        </div>
-
-                        <div class="detail-item warning">
-                            <h4>📦 센서 수급 지연 대응</h4>
-                            <p>ToF 센서 배송 지연으로 기존 보유한 초음파 센서로 대체, AP 모드 캘리브레이션으로 측정 구조 완비</p>
                         </div>
 
                         <div class="detail-item">
@@ -531,38 +489,7 @@
 
             <!-- 현장 테스트 -->
             <div class="results-section">
-                <h3>📍 현장 실증 및 대시보드 - 한미르관</h3>
-
-                <div class="implementation-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">기숙사 불편 발견</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">프로토타입 제작</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">기숙사 적용 요청</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">관계자 회의</div>
-                    </div>
-                    <div class="timeline-item active">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">한미르관 파일럿 테스트</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">데이터 수집 및 검증</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">최종 적용 검토</div>
-                    </div>
-                </div>
+                <h3>📍 현장 실증 및 대시보드</h3>
 
                 <div class="test-results">
                     <h4>📊 A/B 테스트 검증 체계</h4>
