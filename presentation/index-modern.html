@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트 엘리베이터 자동화 시스템</title>
+    <link rel="stylesheet" href="modern-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 고정 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">🏢</div>
+                <div class="logo-text">
+                    <span class="logo-main">Smart Elevator</span>
+                    <span class="logo-sub">Automation System</span>
+                </div>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link">홈</a>
+                <a href="#problem" class="nav-link">문제 정의</a>
+                <a href="#overview" class="nav-link">개요</a>
+                <a href="#hardware" class="nav-link">하드웨어</a>
+                <a href="#features" class="nav-link">기능</a>
+                <a href="#demo" class="nav-link">실시간 시연</a>
+                <a href="#results" class="nav-link">결과</a>
+                <a href="#future" class="nav-link">추후 계획</a>
+            </div>
+
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">스마트 엘리베이터<br>자동화 시스템</h1>
+                <p class="hero-subtitle">AI 비전 인식과 IoT 기술로 엘리베이터 운행 효율을 혁신합니다</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn-primary">실시간 시연 보기</a>
+                    <a href="#overview" class="btn-secondary">프로젝트 소개</a>
+                </div>
+
+                <!-- 라이브 미리보기 -->
+                <div class="live-preview">
+                    <div class="live-badge">🔴 LIVE</div>
+                    <div class="preview-grid">
+                        <div class="preview-item">
+                            <div class="preview-label">실시간 엘리베이터</div>
+                            <iframe id="heroIframe1" src="" frameborder="0"></iframe>
+                            <div class="preview-placeholder" id="heroPlaceholder1">
+                                <div class="placeholder-icon">🌐</div>
+                                <p>실시간 모니터링 준비 중</p>
+                            </div>
+                        </div>
+                        <div class="preview-item">
+                            <div class="preview-label">현장 카메라</div>
+                            <iframe id="heroIframe2" src="" frameborder="0"></iframe>
+                            <div class="preview-placeholder" id="heroPlaceholder2">
+                                <div class="placeholder-icon">📹</div>
+                                <p>실시간 영상 준비 중</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave"></div>
+    </section>
+
+    <!-- 문제 정의 섹션 -->
+    <section id="problem" class="section">
+        <div class="container">
+            <h2 class="section-title">❓ 문제 정의</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⏱️</div>
+                    <h3>불필요한 시간 낭비</h3>
+                    <p>위층에서 1층으로 내려가는 중, 중간층에서 사람이 내린 뒤에도 엘리베이터 문이 <strong>약 13초 이상 불필요하게 열려 있음</strong></p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📦</div>
+                    <h3>불편한 사용 환경</h3>
+                    <p>더 탈 사람이 없음에도 문이 오랫동안 열려 있어 탑승자가 <strong>매번 직접 닫힘 버튼을 눌러야 함</strong></p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🚧</div>
+                    <h3>현실적 제약</h3>
+                    <p>기존 엘리베이터 제어반을 직접 개조하거나 시스템을 수정하는 것은 불가능</p>
+                </div>
+            </div>
+
+            <!-- 문제 상황 영상 -->
+            <div class="video-section">
+                <h3>📹 문제 상황 영상</h3>
+                <div class="video-container">
+                    <video id="problemVideo" controls>
+                        <source src="" type="video/mp4">
+                        브라우저가 비디오를 지원하지 않습니다.
+                    </video>
+                    <div class="video-placeholder" id="videoPlaceholder">
+                        <div class="placeholder-icon">🎬</div>
+                        <h4>영상이 준비 중입니다</h4>
+                        <p>VIDEO_URL을 설정하면 영상이 표시됩니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 개요 섹션 -->
+    <section id="overview" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">🎯 프로젝트 개요</h2>
+            <div class="overview-content">
+                <p class="overview-text">하나의 문제 정의에서 출발해 <strong>시스템 제어, 정보 제공, 효과 검증</strong>을 담당하는 3가지 유기적 기능으로 확장</p>
+
+                <div class="system-flow">
+                    <div class="flow-item">
+                        <div class="flow-number">1</div>
+                        <div class="flow-content">
+                            <h4>기능 1 (자동 제어)</h4>
+                            <p>카메라 상황 인식 ➔ 닫힘 버튼 대신 누름</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-number">2</div>
+                        <div class="flow-content">
+                            <h4>기능 2 (정보 제공)</h4>
+                            <p>7세그먼트 층수 인식 ➔ 웹 서비스 공개</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-number">3</div>
+                        <div class="flow-content">
+                            <h4>기능 3 (효과 검증)</h4>
+                            <p>문 개방 시간 측정 ➔ 데이터 검증</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 요약 이미지 -->
+                <div class="summary-image">
+                    <img src="summary.png" alt="프로젝트 요약">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 하드웨어 섹션 -->
+    <section id="hardware" class="section">
+        <div class="container">
+            <h2 class="section-title">⚙️ 하드웨어 구성</h2>
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-icon">📷</div>
+                    <h3>ESP32 카메라 (2대)</h3>
+                    <p>승강장 상황 판단용 1대<br>층수 표시기 인식용 1대</p>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-icon">⚙️</div>
+                    <h3>서보모터 (1개)</h3>
+                    <p>기존 닫힘 버튼 물리 조작용</p>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-icon">📡</div>
+                    <h3>초음파센서 (1개)</h3>
+                    <p>독립적인 문 상태 및<br>개방시간 측정용</p>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-icon">🔌</div>
+                    <h3>ESP32-S3 Sense</h3>
+                    <p>메인 제어 보드</p>
+                </div>
+            </div>
+
+            <div class="hardware-table">
+                <h3>📋 기능별 역할</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>주요 역할</th>
+                            <th>핵심 기술</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>기능 1</strong></td>
+                            <td>AI 상황 판단 + 버튼 보조</td>
+                            <td>AI 비전 인식, ESP-NOW 무선 통신, 서보모터 제어</td>
+                        </tr>
+                        <tr>
+                            <td><strong>기능 2</strong></td>
+                            <td>층수 인식 + 실시간 웹 서비스</td>
+                            <td>템플릿 매칭, Supabase, GitHub Pages</td>
+                        </tr>
+                        <tr>
+                            <td><strong>기능 3</strong></td>
+                            <td>문 개방시간 및 정차 데이터 측정</td>
+                            <td>초음파 센싱, CSV/웹 데이터 로깅, BEFORE/AFTER 비교</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 기능 섹션 -->
+    <section id="features" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">🔧 핵심 기능</h2>
+
+            <!-- 기능 1 -->
+            <div class="feature-block">
+                <div class="feature-header">
+                    <h3>기능 1 - 닫힘 버튼 자동 누름</h3>
+                    <span class="feature-badge">AI 상황 판단 + 버튼 보조</span>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-flow">
+                        <div class="flow-step">카메라 촬영</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">AI 상황 판단</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">닫힘 여부 결정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">ESP-NOW 전송</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">서보모터 동작</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">닫힘 버튼 압박</div>
+                    </div>
+
+                    <div class="feature-details">
+                        <div class="detail-item">
+                            <h4>🔧 현장 무선 조정 시스템 (AP 모드)</h4>
+                            <p><strong>접속 방식:</strong> 장치가 생성한 Wi-Fi AP에 스마트폰 접속 (192.168.4.1)</p>
+                            <ul>
+                                <li>카메라 구도 확인, AI 판정 결과 실시간 검증</li>
+                                <li>서보 각도 조정, 오답 데이터 저장/다운로드</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-item warning">
+                            <h4>⚠️ 카메라 각도 오작동 해결</h4>
+                            <p>학습 데이터 촬영 각도와 실제 설치 각도의 차이로 AI 판단이 흔들리는 문제 발생</p>
+                            <ul>
+                                <li>다양한 설치 각도 데이터 추가 수집</li>
+                                <li>AP 화면에 반투명 가이드 라인 제공</li>
+                                <li>임계값·연속 프레임 검증·쿨다운 타임 적용으로 오작동 방지</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-item success">
+                            <h4>✨ 특징</h4>
+                            <ul>
+                                <li>기존 엘리베이터 제어기를 건드리지 않음</li>
+                                <li>사람이 직접 누르던 닫힘 버튼을 장치가 보조</li>
+                                <li>외부에 탑승하려는 사람이 있으면 누르지 않음</li>
+                                <li>판단이 불확실하면 누르지 않음</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 기능 2 -->
+            <div class="feature-block">
+                <div class="feature-header">
+                    <h3>기능 2 - 실시간 층수 확인</h3>
+                    <span class="feature-badge">층수 디텍팅 + 웹 서비스</span>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-flow">
+                        <div class="flow-step">7세그먼트 층 표시기</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">ESP32 카메라</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Template Matching</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">이동 규칙 필터링</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Supabase</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">웹 표출</div>
+                    </div>
+
+                    <div class="feature-details">
+                        <div class="detail-item highlight">
+                            <h4>🌐 공개 웹 주소</h4>
+                            <a href="https://joony167.github.io/elevator-floor/" target="_blank" class="web-link">
+                                https://joony167.github.io/elevator-floor/
+                                <span class="external-icon">↗</span>
+                            </a>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4>🔧 기압센서 한계 극복</h4>
+                            <p>기압 난류로 인해 불안정한 초기 방식 포기, 층수 표시기 직접 읽는 시각 인식 방식으로 전환</p>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4>📷 설치 환경 고려 (템플릿 매칭)</h4>
+                            <p>정면 촬영은 이용자의 화면을 가리므로 표시기 상단에 카메라를 비스듬히 설치</p>
+                        </div>
+
+                        <div class="detail-item warning">
+                            <h4>🎯 유사 형태(6/8층) 오인식 필터링</h4>
+                            <p>이전 층수 상태값과 엘리베이터 이동 규칙 결합으로 비정상 튀는 값 자동 필터링</p>
+                            <p class="example-text">예시: 5 → 6 → [8 무시] → 7</p>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4>🔧 현장 무선 조정 시스템 (AP 모드)</h4>
+                            <p>층수 표시기 ROI 설정, 층별 템플릿 등록, 인식 기준값 및 일치도 현장 보정</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 기능 3 -->
+            <div class="feature-block">
+                <div class="feature-header">
+                    <h3>기능 3 - 데이터 기반 문 개방시간 측정</h3>
+                    <span class="feature-badge">초음파 센서 + 데이터 검증</span>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-flow">
+                        <div class="flow-step">초음파 거리 측정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">OPEN/CLOSED 판단</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">정차 기록 생성</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">CSV/웹 데이터 저장</div>
+                    </div>
+
+                    <div class="feature-details">
+                        <div class="detail-item highlight">
+                            <h4>🎯 목적</h4>
+                            <p>실제 제품의 효율성 및 유용성 확보, 데이터 기반 검증</p>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4>⚙️ 기능</h4>
+                            <ul>
+                                <li>1회 정차당 문 개방시간</li>
+                                <li>하루 정차 횟수</li>
+                                <li>평균 문 개방시간</li>
+                                <li>누적 문 개방시간</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-item warning">
+                            <h4>📦 센서 수급 지연 대응</h4>
+                            <p>ToF 센서 배송 지연으로 기존 보유한 초음파 센서로 대체, AP 모드 캘리브레이션으로 측정 구조 완비</p>
+                        </div>
+
+                        <div class="detail-item">
+                            <h4>🔧 현장 무선 조정 시스템 (AP 모드)</h4>
+                            <ul>
+                                <li>초음파 거리 측정값 확인</li>
+                                <li>문 상태(OPEN/CLOSED) 캘리브레이션</li>
+                                <li>최근 정차 기록 검토</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 실시간 시연 섹션 -->
+    <section id="demo" class="section">
+        <div class="container">
+            <h2 class="section-title">🔴 실시간 시연</h2>
+            <p class="section-subtitle">엘리베이터 자동화 시스템의 실시간 작동을 확인하세요</p>
+
+            <div class="live-demo-container">
+                <!-- 라이브 대시보드 -->
+                <div class="live-dashboard">
+                    <div class="dashboard-header">
+                        <div class="live-indicator">
+                            <span class="live-dot"></span>
+                            <span class="live-text">LIVE</span>
+                        </div>
+                        <div class="dashboard-tabs">
+                            <button class="tab-btn active" data-tab="elevator">엘리베이터</button>
+                            <button class="tab-btn" data-tab="camera">현장 카메라</button>
+                            <button class="tab-btn" data-tab="both">동시 보기</button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <!-- 엘리베이터 탭 -->
+                        <div class="tab-content active" id="elevator-tab">
+                            <iframe id="elevatorIframe" src="" frameborder="0"></iframe>
+                            <div class="iframe-placeholder" id="elevatorPlaceholder">
+                                <div class="placeholder-icon">🌐</div>
+                                <h4>실시간 엘리베이터 모니터링</h4>
+                                <p>ELEVATOR_URL을 설정하면 실시간 데이터가 표시됩니다</p>
+                            </div>
+                        </div>
+
+                        <!-- 카메라 탭 -->
+                        <div class="tab-content" id="camera-tab">
+                            <iframe id="cameraIframe" src="" frameborder="0"></iframe>
+                            <div class="iframe-placeholder" id="cameraPlaceholder">
+                                <div class="placeholder-icon">📹</div>
+                                <h4>실시간 현장 카메라</h4>
+                                <p>CAMERA_URL을 설정하면 실시간 영상이 표시됩니다</p>
+                            </div>
+                        </div>
+
+                        <!-- 동시 보기 탭 -->
+                        <div class="tab-content" id="both-tab">
+                            <div class="split-view">
+                                <div class="split-item">
+                                    <div class="split-label">엘리베이터</div>
+                                    <iframe id="elevatorSplitIframe" src="" frameborder="0"></iframe>
+                                    <div class="split-placeholder" id="elevatorSplitPlaceholder">
+                                        <div class="placeholder-icon">🌐</div>
+                                        <p>엘리베이터 데이터</p>
+                                    </div>
+                                </div>
+                                <div class="split-item">
+                                    <div class="split-label">현장 카메라</div>
+                                    <iframe id="cameraSplitIframe" src="" frameborder="0"></iframe>
+                                    <div class="split-placeholder" id="cameraSplitPlaceholder">
+                                        <div class="placeholder-icon">📹</div>
+                                        <p>현장 카메라</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 실시간 통계 -->
+                <div class="live-stats">
+                    <h3>📊 실시간 통계</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📍</div>
+                            <div class="stat-content">
+                                <div class="stat-label">현재 층</div>
+                                <div class="stat-value" id="currentFloor">--</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⬆️</div>
+                            <div class="stat-content">
+                                <div class="stat-label">방향</div>
+                                <div class="stat-value" id="direction">--</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🚪</div>
+                            <div class="stat-content">
+                                <div class="stat-label">문 상태</div>
+                                <div class="stat-value" id="doorStatus">--</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-content">
+                                <div class="stat-label">오늘 운행</div>
+                                <div class="stat-value" id="todayRuns">--회</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="data-info">
+                        <h4>📡 데이터 수집 정보</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">층수 인식:</span>
+                                <span class="info-value">현재 층, 필터링 처리된 층수, Supabase 연결 상태</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">AI 상황 판단:</span>
+                                <span class="info-value">현재 클래스, 신뢰도, 버튼 동작 여부</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">서보 & 문 상태:</span>
+                                <span class="info-value">ESP-NOW 통신 상태, 서보 동작 상태, 초음파 측정 거리</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 결과 섹션 -->
+    <section id="results" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">📈 결과 및 성과</h2>
+
+            <!-- 실험 경과 -->
+            <div class="results-section">
+                <h3>🔬 실험 경과</h3>
+                <div class="photo-container">
+                    <img src="캡처.PNG" alt="실험 경과" class="result-photo">
+                </div>
+            </div>
+
+            <!-- 현장 테스트 -->
+            <div class="results-section">
+                <h3>📍 현장 실증 및 대시보드 - 한미르관</h3>
+
+                <div class="implementation-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">기숙사 불편 발견</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">프로토타입 제작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">기숙사 적용 요청</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">관계자 회의</div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">한미르관 파일럿 테스트</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">데이터 수집 및 검증</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">최종 적용 검토</div>
+                    </div>
+                </div>
+
+                <div class="test-results">
+                    <h4>📊 A/B 테스트 검증 체계</h4>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>조건</th>
+                                <th>측정 항목</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>A (기존)</strong></td>
+                                <td>애드온 미적용 상태</td>
+                                <td>하루 동안 정차당 문 개방시간 및 누적 시간</td>
+                            </tr>
+                            <tr>
+                                <td><strong>B (적용)</strong></td>
+                                <td>AI 문닫힘 보조 및 서보모터 동작</td>
+                                <td>하루 동안 개방시간</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="note">※ 실제 수치는 한미르관 실증 데이터 수집 완료 후 업데이트 예정</p>
+                </div>
+
+                <div class="photo-container">
+                    <img src="photography.png" alt="현장 테스트 사진" class="result-photo">
+                </div>
+            </div>
+
+            <!-- 기대효과 -->
+            <div class="results-section">
+                <h3>🎯 기대효과</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⏱️</div>
+                        <h4>불필요한 문 개방시간 감소</h4>
+                        <p>중간층 하차 후 탑승자 부재 시 대기 시간을 최소화하여 운행 효율 증대</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">👥</div>
+                        <h4>사용자 편의성 향상</h4>
+                        <p>매번 닫힘 버튼을 수동으로 누르는 번거로움 해소</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌐</div>
+                        <h4>실시간 위치 정보 제공</h4>
+                        <p>웹을 통해 엘리베이터의 현재 위치를 미리 확인 가능</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📊</div>
+                        <h4>데이터 기반 승강기 관리</h4>
+                        <p>정차 횟수 및 문 개방시간 데이터 누적으로 이용 패턴 분석 및 관리 고도화</p>
+                    </div>
+                </div>
+
+                <div class="comparison-section">
+                    <h4>🔄 전후 비교</h4>
+                    <table class="before-after-table">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>기존</th>
+                                <th>구현 후</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>닫힘 버튼</td>
+                                <td>직접 누름</td>
+                                <td>자동 누름</td>
+                            </tr>
+                            <tr>
+                                <td>층수 확인</td>
+                                <td>엘리베이터 타서 확인</td>
+                                <td>웹사이트에서 실시간 확인</td>
+                            </tr>
+                            <tr>
+                                <td>데이터 수집</td>
+                                <td>수동 기록</td>
+                                <td>자동 데이터 로깅</td>
+                            </tr>
+                            <tr>
+                                <td>모니터링</td>
+                                <td>현장 방문 필요</td>
+                                <td>웹으로 원격 모니터링</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="photo-container">
+                    <img src="result.png" alt="실험 결과" class="result-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 추후 계획 섹션 -->
+    <section id="future" class="section">
+        <div class="container">
+            <h2 class="section-title">🚀 추후 계획</h2>
+
+            <div class="future-content">
+                <div class="future-item completed">
+                    <div class="future-status">✅ 완료</div>
+                    <h3>🏫 기숙사 협의 미팅 진행 완료</h3>
+                    <div class="photo-container">
+                        <img src="dormitory.jpg" alt="기숙사" class="result-photo">
+                    </div>
+                </div>
+
+                <div class="future-item">
+                    <div class="future-status">🔄 진행 중</div>
+                    <h3>📊 데이터 수집 및 분석</h3>
+                    <p>한미르관 파일럿 테스트를 통한 실제 데이터 수집 및 시스템 성능 검증</p>
+                </div>
+
+                <div class="future-item">
+                    <div class="future-status">📋 계획 중</div>
+                    <h3>🔧 시스템 최적화</h3>
+                    <p>수집된 데이터를 기반으로 AI 모델 개선 및 시스템 튜닝</p>
+                </div>
+
+                <div class="future-item">
+                    <div class="future-status">🎯 목표</div>
+                    <h3>🏢 전면 확장</h3>
+                    <p>성능 검증 후 기숙사 전체 엘리베이터로 시스템 확장 적용</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">🏢</div>
+                    <div class="logo-text">
+                        <span class="logo-main">Smart Elevator</span>
+                        <span class="logo-sub">Automation System</span>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>바로가기</h4>
+                    <a href="#hero">홈</a>
+                    <a href="#demo">실시간 시연</a>
+                    <a href="#features">기능 소개</a>
+                    <a href="#results">결과 및 성과</a>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>연락처</h4>
+                    <p>프로젝트 문의 및 협업</p>
+                    <a href="mailto:contact@elevator-automation.com" class="contact-link">contact@elevator-automation.com</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Elevator Automation System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="modern-script.js"></script>
+</body>
+</html>
