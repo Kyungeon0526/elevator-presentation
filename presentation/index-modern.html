@@ -80,6 +80,23 @@
     <section id="problem" class="section">
         <div class="container">
             <h2 class="section-title">❓ 문제 정의</h2>
+
+            <!-- 문제 상황 영상 -->
+            <div class="video-section">
+                <h3>📹 문제 상황 영상</h3>
+                <div class="video-container">
+                    <video id="problemVideo" controls style="width: 100%; max-width: 800px; height: auto; display: none;">
+                        <source src="피지컬AI_오프닝영상.mp4" type="video/mp4">
+                        브라우저가 비디오를 지원하지 않습니다.
+                    </video>
+                    <div class="video-placeholder" id="videoPlaceholder">
+                        <div class="placeholder-icon">🎬</div>
+                        <h4>영상이 준비 중입니다</h4>
+                        <p>영상을 불러오고 있습니다...</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="problem-grid">
                 <div class="problem-card">
                     <div class="problem-icon">⏱️</div>
@@ -98,20 +115,8 @@
                 </div>
             </div>
 
-            <!-- 문제 상황 영상 -->
-            <div class="video-section">
-                <h3>📹 문제 상황 영상</h3>
-                <div class="video-container">
-                    <video id="problemVideo" controls>
-                        <source src="" type="video/mp4">
-                        브라우저가 비디오를 지원하지 않습니다.
-                    </video>
-                    <div class="video-placeholder" id="videoPlaceholder">
-                        <div class="placeholder-icon">🎬</div>
-                        <h4>영상이 준비 중입니다</h4>
-                        <p>VIDEO_URL을 설정하면 영상이 표시됩니다</p>
-                    </div>
-                </div>
+            <div class="timing-image">
+                <img src="elevator_timing_final.PNG" alt="엘리베이터 타이밍 분석" class="result-photo">
             </div>
         </div>
     </section>

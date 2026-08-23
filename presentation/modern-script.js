@@ -361,8 +361,24 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeIframe(cameraSplitIframe, cameraSplitPlaceholder, URLS.CAMERA);
     }
 
-    if (URLS.VIDEO) {
-        initializeVideo(problemVideo, videoPlaceholder, URLS.VIDEO);
+    // 문제 정의 영상 로드 처리
+    if (problemVideo) {
+        problemVideo.addEventListener('loadeddata', () => {
+            console.log('문제 정의 영상이 로드되었습니다.');
+            if (videoPlaceholder) {
+                videoPlaceholder.style.display = 'none';
+            }
+            problemVideo.style.display = 'block';
+        });
+
+        problemVideo.addEventListener('error', () => {
+            console.error('영상 로드 실패');
+            if (videoPlaceholder) {
+                videoPlaceholder.style.display = 'block';
+                videoPlaceholder.querySelector('h4').textContent = '영상을 찾을 수 없습니다';
+                videoPlaceholder.querySelector('p').textContent = '피지컬AI_오프닝영상.mp4 파일을 확인하세요';
+            }
+        });
     }
 
     // 히어로 섹션 URLs
