@@ -5,7 +5,7 @@
 // URL 설정 (나중에 실제 URL로 변경하세요)
 const URLS = {
     ELEVATOR: '', // 실시간 엘리베이터 모니터링 URL
-    CAMERA: '',   // 현장 카메라 URL
+    CAMERA: 'https://meet.jit.si/elevator-demo-2024-08-24',   // Jitsi Meet 현장 카메라 URL
     VIDEO: '',    // 문제 정의 영상 URL
     WEBPAGE: '',  // 라이브 시연 웹페이지 URL
     PHONE: ''     // 스마트폰 중계 화면 URL
@@ -26,12 +26,6 @@ const elevatorSplitIframe = document.getElementById('elevatorSplitIframe');
 const elevatorSplitPlaceholder = document.getElementById('elevatorSplitPlaceholder');
 const cameraSplitIframe = document.getElementById('cameraSplitIframe');
 const cameraSplitPlaceholder = document.getElementById('cameraSplitPlaceholder');
-
-// 히어로 섹션 요소
-const heroIframe1 = document.getElementById('heroIframe1');
-const heroPlaceholder1 = document.getElementById('heroPlaceholder1');
-const heroIframe2 = document.getElementById('heroIframe2');
-const heroPlaceholder2 = document.getElementById('heroPlaceholder2');
 
 // 문제 정의 영상 요소
 const problemVideo = document.getElementById('problemVideo');
@@ -214,28 +208,6 @@ function updateVideoUrl(url) {
     }
 }
 
-function updateHeroUrls(elevatorUrl, cameraUrl) {
-    if (elevatorUrl && elevatorUrl.trim() !== '') {
-        heroIframe1.src = elevatorUrl;
-        heroIframe1.classList.add('active');
-        heroPlaceholder1.classList.add('hidden');
-    } else {
-        heroIframe1.src = '';
-        heroIframe1.classList.remove('active');
-        heroPlaceholder1.classList.remove('hidden');
-    }
-
-    if (cameraUrl && cameraUrl.trim() !== '') {
-        heroIframe2.src = cameraUrl;
-        heroIframe2.classList.add('active');
-        heroPlaceholder2.classList.add('hidden');
-    } else {
-        heroIframe2.src = '';
-        heroIframe2.classList.remove('active');
-        heroPlaceholder2.classList.remove('hidden');
-    }
-}
-
 // ============================================
 // 실시간 데이터 시뮬레이션
 // ============================================
@@ -381,15 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 히어로 섹션 URLs
-    if (URLS.ELEVATOR) {
-        initializeIframe(heroIframe1, heroPlaceholder1, URLS.ELEVATOR);
-    }
-
-    if (URLS.CAMERA) {
-        initializeIframe(heroIframe2, heroPlaceholder2, URLS.CAMERA);
-    }
-
     console.log('스마트 엘리베이터 자동화 시스템 웹사이트가 초기화되었습니다.');
     console.log('URL을 설정하려면 다음 함수를 사용하세요:');
     console.log('setUrl("ELEVATOR", "your-url")');
@@ -407,10 +370,61 @@ window.SmartElevatorApp = {
     updateElevatorUrl,
     updateCameraUrl,
     updateVideoUrl,
-    updateHeroUrls,
     simulateLiveData
 };
 
 // 콘솔 안내
 console.log('%c스마트 엘리베이터 자동화 시스템', 'color: #2563eb; font-size: 20px; font-weight: bold;');
 console.log('%c웹사이트 API가 로드되었습니다.', 'color: #64748b; font-size: 14px;');
+
+// ============================================
+// 문제점 및 해결 토글 기능
+// ============================================
+
+// 기능 헤더 클릭 시 토글
+const featureToggles = document.querySelectorAll('.feature-toggle');
+
+featureToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        const featureNumber = toggle.dataset.feature;
+
+        // 헤더 활성화/비활성화
+        toggle.classList.toggle('active');
+
+        // 문제 해결 콘텐츠 토글
+        const psContent = document.getElementById(`problem-solution-${featureNumber}`);
+        const psToggleBtn = toggle.closest('.feature-content').querySelector('.ps-toggle-btn');
+
+        if (psContent) {
+            psContent.classList.toggle('active');
+        }
+
+        if (psToggleBtn) {
+            psToggleBtn.classList.toggle('active');
+        }
+    });
+});
+
+// 문제 해결 보기 버튼 클릭 시 토글
+const psToggleBtns = document.querySelectorAll('.ps-toggle-btn');
+
+psToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const featureNumber = btn.dataset.feature;
+
+        // 버튼 활성화/비활성화
+        btn.classList.toggle('active');
+
+        // 콘텐츠 토글
+        const psContent = document.getElementById(`problem-solution-${featureNumber}`);
+        if (psContent) {
+            psContent.classList.toggle('active');
+        }
+
+        // 헤더 아이콘 회전
+        const featureHeader = document.querySelector(`.feature-toggle[data-feature="${featureNumber}"]`);
+        if (featureHeader) {
+            featureHeader.classList.toggle('active');
+        }
+    });
+});

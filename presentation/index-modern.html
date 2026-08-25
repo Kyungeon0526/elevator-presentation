@@ -25,6 +25,7 @@
                 <a href="#overview" class="nav-link">개요</a>
                 <a href="#hardware" class="nav-link">하드웨어</a>
                 <a href="#features" class="nav-link">기능</a>
+                <a href="#ab-test" class="nav-link">A/B 테스트</a>
                 <a href="#demo" class="nav-link">실시간 시연</a>
                 <a href="#results" class="nav-link">결과</a>
                 <a href="#future" class="nav-link">추후 계획</a>
@@ -218,9 +219,10 @@
 
             <!-- 기능 1 -->
             <div class="feature-block">
-                <div class="feature-header">
+                <div class="feature-header feature-toggle" data-feature="1">
                     <h3>기능 1 - 닫힘 버튼 자동 누름</h3>
                     <span class="feature-badge">AI 상황 판단 + 버튼 보조</span>
+                    <span class="toggle-icon">▼</span>
                 </div>
                 <div class="feature-content">
                     <div class="feature-flow">
@@ -256,14 +258,39 @@
                             <p>엘리베이터 제어반과 배선을 전혀 개조하지 않습니다. 승객이 직접 누르던 버튼을 서보모터가 물리적으로 대신 누를 뿐이라 탈부착만으로 설치·철거가 가능합니다.</p>
                         </div>
                     </div>
+
+                    <!-- 문제 및 해결 -->
+                    <div class="problem-solution-toggle">
+                        <button class="ps-toggle-btn" data-feature="1">문제점 및 해결 보기</button>
+                        <div class="problem-solution-content" id="problem-solution-1">
+                            <div class="ps-section">
+                                <h4 class="ps-title">🔴 문제점 — 카메라 각도 차이로 AI 판단이 흔들렸다</h4>
+                                <p class="ps-text">
+                                    • 학습 데이터 촬영 각도와 실제 설치 각도가 달랐음<br>
+                                    • 같은 상황도 카메라 각도에 따라 다르게 보임<br>
+                                    • 카메라 높이·기울기 차이로 사람과 문의 위치가 화면에서 달라짐<br>
+                                    • 이로 인해 AI 판단 결과가 흔들릴 수 있었음
+                                </p>
+                            </div>
+                            <div class="ps-section">
+                                <h4 class="ps-title">🟢 해결</h4>
+                                <p class="ps-text">
+                                    • 카메라 각도를 조금씩 바꿔가며 데이터 추가 수집<br>
+                                    • AP 화면에서 현재 카메라 구도를 직접 확인<br>
+                                    • 학습 당시 화면을 반투명 가이드로 겹쳐 실제 설치 각도 보정
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 기능 2 -->
             <div class="feature-block">
-                <div class="feature-header">
+                <div class="feature-header feature-toggle" data-feature="2">
                     <h3>기능 2 - 실시간 층수 확인</h3>
                     <span class="feature-badge">층수 디텍팅 + 웹 서비스</span>
+                    <span class="toggle-icon">▼</span>
                 </div>
                 <div class="feature-content">
                     <div class="feature-flow">
@@ -288,20 +315,63 @@
                         </div>
 
                     </div>
+
+                    <!-- 문제 및 해결 -->
+                    <div class="problem-solution-toggle">
+                        <button class="ps-toggle-btn" data-feature="2">문제점 및 해결 보기</button>
+                        <div class="problem-solution-content" id="problem-solution-2">
+                            <div class="ps-section">
+                                <h4 class="ps-title">🔴 문제 1 — 기압센서의 불안정한 층수 판단</h4>
+                                <p class="ps-text">
+                                    • 초기에는 층마다 기압이 다르다는 점을 이용해 BMP 기압센서로 현재 층을 추정하려 했다<br>
+                                    • 하지만 층간 기압 차이가 작고, 문 개폐·환기·사람 이동·날씨 등에 따라 기압값이 변해<br>
+                                    • 같은 층에서도 측정값이 흔들리는 문제가 발생했다
+                                </p>
+                            </div>
+                            <div class="ps-section">
+                                <h4 class="ps-title">🟢 해결</h4>
+                                <p class="ps-text">
+                                    • 기압으로 층수를 간접적으로 추정하는 방식을 포기하고<br>
+                                    • 엘리베이터에 이미 정확하게 표시되고 있는 층수 표시기를 카메라로 직접 인식하는 방식으로 변경했다
+                                </p>
+                            </div>
+                            <div class="ps-section">
+                                <h4 class="ps-title">🔴 문제 2 — 정면 설치의 사용자 불편</h4>
+                                <p class="ps-text">
+                                    • 처음에는 7세그먼트의 각 점등 상태를 읽는 디코딩 방식을 검토했지만<br>
+                                    • 정확한 인식을 위해서는 카메라가 층수 표시기를 정면에서 바라봐야 했다<br>
+                                    • 이 경우 카메라가 층수 화면을 가려 승객의 시야를 방해하고 심미성이 떨어지는 문제가 있었다
+                                </p>
+                            </div>
+                            <div class="ps-section">
+                                <h4 class="ps-title">🟢 해결</h4>
+                                <p class="ps-text">
+                                    • 사용자에게 방해되지 않도록 카메라를 층수 표시기 위쪽에 설치해 위에서 아래로 촬영하도록 변경했다<br>
+                                    • 이 때문에 숫자가 왜곡되어 보였지만, 실제 설치 위치에서 보이는 각 층의 왜곡된 숫자를 직접 수집해 기준 이미지로 등록하고<br>
+                                    • Template Matching 방식으로 층수를 인식했다
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 기능 3 -->
             <div class="feature-block">
-                <div class="feature-header">
+                <div class="feature-header feature-toggle" data-feature="3">
                     <h3>기능 3 - 데이터 기반 문 개방시간 측정</h3>
                     <span class="feature-badge">초음파 센서 + 데이터 검증</span>
+                    <span class="toggle-icon">▼</span>
                 </div>
                 <div class="feature-content">
                     <div class="feature-flow">
-                        <div class="flow-step">초음파 거리 측정</div>
+                        <div class="flow-step">초음파센서 거리 측정</div>
                         <div class="flow-arrow">→</div>
-                        <div class="flow-step">열림/닫힘 판단 및 데이터 기록/저장</div>
+                        <div class="flow-step">OPEN/CLOSED 판단</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">문 개방시간 측정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">A/B 테스트 데이터 확보</div>
                     </div>
 
                     <div class="feature-details">
@@ -325,8 +395,90 @@
                     </div>
 
                     <div class="photo-container">
-                        <img src="microwave.png" alt="초음파 센서 실증 데이터" class="result-photo">
+                        <video controls style="width: 100%; max-width: 600px; height: auto;">
+                            <source src="superwave.mp4" type="video/mp4">
+                            브라우저가 비디오를 지원하지 않습니다.
+                        </video>
                     </div>
+
+                    <!-- 문제 및 해결 -->
+                    <div class="problem-solution-toggle">
+                        <button class="ps-toggle-btn" data-feature="3">문제점 및 해결 보기</button>
+                        <div class="problem-solution-content" id="problem-solution-3">
+                            <div class="ps-section">
+                                <h4 class="ps-title">🔴 문제점 1 — ToF 센서 배송 지연</h4>
+                                <p class="ps-text">
+                                    • 초기에는 ToF 센서를 이용해 문의 거리 변화를 측정할 계획이었지만<br>
+                                    • 센서 배송이 예상보다 늦어져 실험 및 데이터 수집 일정이 지연될 상황이 발생했다
+                                </p>
+                            </div>
+                            <div class="ps-section">
+                                <h4 class="ps-title">🟢 해결</h4>
+                                <p class="ps-text">
+                                    • 필요한 것은 특정 ToF 센서가 아니라 '문이 열리고 닫힐 때 발생하는 거리 변화를 측정하는 기능'이라고 다시 정의했다<br>
+                                    • 이에 기존에 보유하고 있던 초음파센서와 ESP32C6를 연결해 동일한 목적의 계측 시스템을 구현했다
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A/B 테스트 시뮬레이션 결과 섹션 -->
+    <section id="ab-test" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">📊 A/B 테스트 시뮬레이션 결과</h2>
+            <p class="section-subtitle">기능 3 적용 전후의 데이터 비교 결과</p>
+
+            <div class="ab-test-container">
+                <div class="ab-test-grid">
+                    <!-- A칸: Before -->
+                    <div class="ab-test-column">
+                        <div class="ab-test-header">
+                            <h3 class="ab-test-title">A (Before)</h3>
+                            <span class="ab-test-badge">기존</span>
+                        </div>
+                        <div class="ab-test-image-container">
+                            <div class="ab-test-placeholder">
+                                <div class="placeholder-icon">📷</div>
+                                <h4>A칸 이미지</h4>
+                                <p>기존 상태 이미지를 넣어주세요</p>
+                            </div>
+                        </div>
+                        <div class="ab-test-info">
+                            <h4>📋 측정 조건</h4>
+                            <p>애드온 미적용 상태</p>
+                            <p>하루 동안 정차당 문 개방시간 및 누적 시간 측정</p>
+                        </div>
+                    </div>
+
+                    <!-- B칸: After -->
+                    <div class="ab-test-column">
+                        <div class="ab-test-header">
+                            <h3 class="ab-test-title">B (After)</h3>
+                            <span class="ab-test-badge">적용</span>
+                        </div>
+                        <div class="ab-test-image-container">
+                            <div class="ab-test-placeholder">
+                                <div class="placeholder-icon">📷</div>
+                                <h4>B칸 이미지</h4>
+                                <p>적용 후 이미지를 넣어주세요</p>
+                            </div>
+                        </div>
+                        <div class="ab-test-info">
+                            <h4>📋 측정 조건</h4>
+                            <p>AI 문닫힘 보조 및 서보모터 동작</p>
+                            <p>하루 동안 개방시간 측정</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비교 설명 -->
+                <div class="ab-test-comparison">
+                    <h4>🔄 비교 분석</h4>
+                    <p>같은 엘리베이터에서 적용 전후(Before/After)를 실제 현장 데이터로 직접 비교해 효과를 증명합니다. 초음파 센서로 객관적으로 측정된 데이터를 통해 문 개방시간 감소를 수치로 보여줍니다.</p>
                 </div>
             </div>
         </div>
@@ -542,7 +694,7 @@
             <div class="future-content">
                 <div class="future-item completed">
                     <div class="future-status">✅ 완료</div>
-                    <h3>🏫 기숙사 협의 미팅 진행 완료</h3>
+                    <h3>🏫 기숙사 협의 미팅 진행 완료(2026.08.26)</h3>
                     <div class="photo-container">
                         <img src="dormitory.jpg" alt="기숙사" class="result-photo">
                     </div>

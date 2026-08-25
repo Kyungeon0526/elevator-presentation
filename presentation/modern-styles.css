@@ -1635,3 +1635,360 @@ body {
         font-size: 0.75rem;
     }
 }
+
+/* ============================================
+   목표 섹션 스타일
+   ============================================ */
+
+.goal-section {
+    margin: 3rem 0;
+}
+
+.goal-section h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.goal-box {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0%, 100% {
+        transform: translate(-30%, -30%) rotate(0deg);
+    }
+    50% {
+        transform: translate(30%, 30%) rotate(180deg);
+    }
+}
+
+.goal-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   기능 목표 박스 스타일
+   ============================================ */
+
+.feature-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature-goal-box {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-goal-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: shine 3s ease-in-out infinite;
+}
+
+.feature-goal-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   문제점 및 해결 토글 스타일
+   ============================================ */
+
+.feature-header.feature-toggle {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feature-header.feature-toggle:hover {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    color: var(--primary);
+}
+
+.feature-header.feature-toggle.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.problem-solution-toggle {
+    margin-top: 2rem;
+}
+
+.ps-toggle-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.ps-toggle-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.ps-toggle-btn.active {
+    background: var(--secondary);
+}
+
+.problem-solution-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease;
+    opacity: 0;
+    margin-top: 1rem;
+}
+
+.problem-solution-content.active {
+    max-height: 2000px;
+    opacity: 1;
+    transition: max-height 0.5s ease-in, opacity 0.3s ease;
+}
+
+.ps-section {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-top: 1rem;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary);
+    transition: var(--transition);
+}
+
+.ps-section:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.ps-section:nth-child(odd) {
+    border-left-color: var(--danger);
+    background: #fef2f2;
+}
+
+.ps-section:nth-child(even) {
+    border-left-color: var(--accent);
+    background: #ecfdf5;
+}
+
+.ps-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ps-text {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.ps-text strong {
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ============================================
+   A/B 테스트 시뮬레이션 결과 스타일
+   ============================================ */
+
+.ab-test-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.ab-test-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.ab-test-column {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.ab-test-column:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.ab-test-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.ab-test-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.ab-test-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.ab-test-image-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: var(--background-alt);
+    overflow: hidden;
+}
+
+.ab-test-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--text-secondary);
+}
+
+.ab-test-placeholder .placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.ab-test-placeholder h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.ab-test-placeholder p {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.ab-test-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ab-test-info {
+    padding: 1.5rem;
+    background: white;
+}
+
+.ab-test-info h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ab-test-info p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+}
+
+.ab-test-comparison {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--accent);
+}
+
+.ab-test-comparison h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ab-test-comparison p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1rem;
+}
