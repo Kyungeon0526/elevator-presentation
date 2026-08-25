@@ -48,29 +48,6 @@
                     <a href="#demo" class="btn-primary">실시간 시연 보기</a>
                     <a href="#overview" class="btn-secondary">프로젝트 소개</a>
                 </div>
-
-                <!-- 라이브 미리보기 -->
-                <div class="live-preview">
-                    <div class="live-badge">🔴 LIVE</div>
-                    <div class="preview-grid">
-                        <div class="preview-item">
-                            <div class="preview-label">실시간 엘리베이터</div>
-                            <iframe id="heroIframe1" src="" frameborder="0"></iframe>
-                            <div class="preview-placeholder" id="heroPlaceholder1">
-                                <div class="placeholder-icon">🌐</div>
-                                <p>실시간 모니터링 준비 중</p>
-                            </div>
-                        </div>
-                        <div class="preview-item">
-                            <div class="preview-label">현장 카메라</div>
-                            <iframe id="heroIframe2" src="" frameborder="0"></iframe>
-                            <div class="preview-placeholder" id="heroPlaceholder2">
-                                <div class="placeholder-icon">📹</div>
-                                <p>실시간 영상 준비 중</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="hero-wave"></div>
@@ -116,7 +93,7 @@
             </div>
 
             <div class="timing-image">
-                <img src="elevator_timing_final.PNG" alt="엘리베이터 타이밍 분석" class="result-photo">
+                <img src="elevator_timing_PPT.png" alt="엘리베이터 타이밍 분석" class="result-photo">
             </div>
         </div>
     </section>
@@ -137,7 +114,13 @@
                     </div>
                 </div>
 
-                <p class="overview-text">하나의 문제 정의에서 출발해 <strong>시스템 제어, 정보 제공, 효과 검증</strong>을 담당하는 3가지 유기적 기능으로 확장</p>
+                <!-- 목표 -->
+                <div class="goal-section">
+                    <h3>🎯 우리의 목표</h3>
+                    <div class="goal-box">
+                        <p class="goal-text">엘리베이터를 효율적으로 운행시켜 대기 시간을 줄이자</p>
+                    </div>
+                </div>
 
                 <div class="system-flow">
                     <div class="flow-item">
@@ -165,10 +148,6 @@
                     </div>
                 </div>
 
-                <!-- 요약 이미지 -->
-                <div class="summary-image">
-                    <img src="summary.png" alt="프로젝트 요약">
-                </div>
             </div>
         </div>
     </section>
@@ -262,16 +241,19 @@
                         <div class="detail-card">
                             <div class="detail-icon">📱</div>
                             <h4>현장 무선 조정 시스템</h4>
+                            <p>카메라(판단부)와 서보모터(실행부)를 분리 설치하고 ESP-NOW로 무선 연동합니다. 엘리베이터 배선을 건드리지 않고도 판단 결과를 실시간으로 전달합니다.</p>
                         </div>
 
                         <div class="detail-card warning">
                             <div class="detail-icon">⚠️</div>
                             <h4>카메라 각도 오작동 해결</h4>
+                            <p>사람이 보이거나 판단이 애매하면 절대 버튼을 누르지 않습니다. 오작동으로 인한 안전사고보다 "조금 늦게 닫히는 것"을 택하는 보수적 설계입니다.</p>
                         </div>
 
                         <div class="detail-card success">
                             <div class="detail-icon">✨</div>
-                            <h4>기존 시스템 비침해 방지</h4>
+                            <h4>기존 시스템 비침해</h4>
+                            <p>엘리베이터 제어반과 배선을 전혀 개조하지 않습니다. 승객이 직접 누르던 버튼을 서보모터가 물리적으로 대신 누를 뿐이라 탈부착만으로 설치·철거가 가능합니다.</p>
                         </div>
                     </div>
                 </div>
@@ -285,11 +267,15 @@
                 </div>
                 <div class="feature-content">
                     <div class="feature-flow">
-                        <div class="flow-step">ESP32 카메라</div>
+                        <div class="flow-step">ESP32 카메라 촬영</div>
                         <div class="flow-arrow">→</div>
-                        <div class="flow-step">전통적 비전 인식</div>
+                        <div class="flow-step">Template Matching</div>
                         <div class="flow-arrow">→</div>
-                        <div class="flow-step">실시간 층수 확인 사이트 표출</div>
+                        <div class="flow-step">층수 오류 보정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Supabase 전송</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">웹사이트 실시간 표시</div>
                     </div>
 
                     <div class="feature-details">
@@ -315,37 +301,31 @@
                     <div class="feature-flow">
                         <div class="flow-step">초음파 거리 측정</div>
                         <div class="flow-arrow">→</div>
-                        <div class="flow-step">OPEN/CLOSED 판단</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">정차 기록 생성</div>
-                        <div class="flow-arrow">→</div>
-                        <div class="flow-step">CSV/웹 데이터 저장</div>
+                        <div class="flow-step">열림/닫힘 판단 및 데이터 기록/저장</div>
                     </div>
 
                     <div class="feature-details">
-                        <div class="detail-item highlight">
-                            <h4>🎯 목적</h4>
-                            <p>실제 제품의 효율성 및 유용성 확보, 데이터 기반 검증</p>
+                        <div class="detail-card">
+                            <div class="detail-icon">📡</div>
+                            <h4>초음파 기반 거리 실시간 탐지</h4>
+                            <p>문을 닫는 AI 판단 시스템과는 완전히 독립된 센서입니다. 스스로 결과를 보고하지 않고, 제3자 센서가 객관적으로 검증합니다.</p>
                         </div>
 
-                        <div class="detail-item">
-                            <h4>⚙️ 기능</h4>
-                            <ul>
-                                <li>1회 정차당 문 개방시간</li>
-                                <li>하루 정차 횟수</li>
-                                <li>평균 문 개방시간</li>
-                                <li>누적 문 개방시간</li>
-                            </ul>
+                        <div class="detail-card warning">
+                            <div class="detail-icon">⏱️</div>
+                            <h4>문 개방시간 데이터 확보</h4>
+                            <p>시뮬레이션이 아닌 실제 운행 중인 엘리베이터에서 자동으로 지속 수집됩니다. 발표를 위한 일회성 측정이 아니라 지금도 계속 쌓이는 데이터입니다.</p>
                         </div>
 
-                        <div class="detail-item">
-                            <h4>🔧 현장 무선 조정 시스템 (AP 모드)</h4>
-                            <ul>
-                                <li>초음파 거리 측정값 확인</li>
-                                <li>문 상태(OPEN/CLOSED) 캘리브레이션</li>
-                                <li>최근 정차 기록 검토</li>
-                            </ul>
+                        <div class="detail-card success">
+                            <div class="detail-icon">✨</div>
+                            <h4>Before/After 정량 비교</h4>
+                            <p>장치 적용 전(A)과 적용 후(B)를 같은 장소·같은 조건에서 비교해 개방시간 감소를 수치로 보여줍니다. 감이 아니라 통계로 말합니다.</p>
                         </div>
+                    </div>
+
+                    <div class="photo-container">
+                        <img src="microwave.png" alt="초음파 센서 실증 데이터" class="result-photo">
                     </div>
                 </div>
             </div>
@@ -386,11 +366,15 @@
 
                         <!-- 카메라 탭 -->
                         <div class="tab-content" id="camera-tab">
-                            <iframe id="cameraIframe" src="" frameborder="0"></iframe>
-                            <div class="iframe-placeholder" id="cameraPlaceholder">
+                            <iframe id="cameraIframe"
+                                    src="https://meet.jit.si/elevator-demo-2024-08-24"
+                                    frameborder="0"
+                                    allow="camera; microphone; fullscreen; display-capture; autoplay"
+                                    style="width: 100%; height: 500px; border: none;"></iframe>
+                            <div class="iframe-placeholder" id="cameraPlaceholder" style="display: none;">
                                 <div class="placeholder-icon">📹</div>
                                 <h4>실시간 현장 카메라</h4>
-                                <p>CAMERA_URL을 설정하면 실시간 영상이 표시됩니다</p>
+                                <p>영상통화 연결 준비 중...</p>
                             </div>
                         </div>
 
@@ -407,8 +391,12 @@
                                 </div>
                                 <div class="split-item">
                                     <div class="split-label">현장 카메라</div>
-                                    <iframe id="cameraSplitIframe" src="" frameborder="0"></iframe>
-                                    <div class="split-placeholder" id="cameraSplitPlaceholder">
+                                    <iframe id="cameraSplitIframe"
+                                            src="https://meet.jit.si/elevator-demo-2024-08-24"
+                                            frameborder="0"
+                                            allow="camera; microphone; fullscreen; display-capture; autoplay"
+                                            style="width: 100%; height: 400px; border: none;"></iframe>
+                                    <div class="split-placeholder" id="cameraSplitPlaceholder" style="display: none;">
                                         <div class="placeholder-icon">📹</div>
                                         <p>현장 카메라</p>
                                     </div>
@@ -483,7 +471,7 @@
             <div class="results-section">
                 <h3>🔬 실험 경과</h3>
                 <div class="photo-container">
-                    <img src="캡처.PNG" alt="실험 경과" class="result-photo">
+                    <img src="test_picture.png" alt="실험 경과" class="result-photo">
                 </div>
             </div>
 
@@ -514,11 +502,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p class="note">※ 실제 수치는 한미르관 실증 데이터 수집 완료 후 업데이트 예정</p>
-                </div>
-
-                <div class="photo-container">
-                    <img src="photography.png" alt="현장 테스트 사진" class="result-photo">
                 </div>
             </div>
 
@@ -547,45 +530,6 @@
                         <p>정차 횟수 및 문 개방시간 데이터 누적으로 이용 패턴 분석 및 관리 고도화</p>
                     </div>
                 </div>
-
-                <div class="comparison-section">
-                    <h4>🔄 전후 비교</h4>
-                    <table class="before-after-table">
-                        <thead>
-                            <tr>
-                                <th>항목</th>
-                                <th>기존</th>
-                                <th>구현 후</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>닫힘 버튼</td>
-                                <td>직접 누름</td>
-                                <td>자동 누름</td>
-                            </tr>
-                            <tr>
-                                <td>층수 확인</td>
-                                <td>엘리베이터 타서 확인</td>
-                                <td>웹사이트에서 실시간 확인</td>
-                            </tr>
-                            <tr>
-                                <td>데이터 수집</td>
-                                <td>수동 기록</td>
-                                <td>자동 데이터 로깅</td>
-                            </tr>
-                            <tr>
-                                <td>모니터링</td>
-                                <td>현장 방문 필요</td>
-                                <td>웹으로 원격 모니터링</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="photo-container">
-                    <img src="result.png" alt="실험 결과" class="result-photo">
-                </div>
             </div>
         </div>
     </section>
@@ -602,24 +546,6 @@
                     <div class="photo-container">
                         <img src="dormitory.jpg" alt="기숙사" class="result-photo">
                     </div>
-                </div>
-
-                <div class="future-item">
-                    <div class="future-status">🔄 진행 중</div>
-                    <h3>📊 데이터 수집 및 분석</h3>
-                    <p>한미르관 파일럿 테스트를 통한 실제 데이터 수집 및 시스템 성능 검증</p>
-                </div>
-
-                <div class="future-item">
-                    <div class="future-status">📋 계획 중</div>
-                    <h3>🔧 시스템 최적화</h3>
-                    <p>수집된 데이터를 기반으로 AI 모델 개선 및 시스템 튜닝</p>
-                </div>
-
-                <div class="future-item">
-                    <div class="future-status">🎯 목표</div>
-                    <h3>🏢 전면 확장</h3>
-                    <p>성능 검증 후 기숙사 전체 엘리베이터로 시스템 확장 적용</p>
                 </div>
             </div>
         </div>
