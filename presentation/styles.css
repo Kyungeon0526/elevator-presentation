@@ -1652,3 +1652,25 @@ body {
     margin-bottom: 0.5rem;
     color: #1e293b;
 }
+
+/* 인터뷰 오디오 스타일 */
+.interview-audio {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.interview-audio h4 {
+    margin-bottom: 1rem;
+    color: #1e293b;
+    font-size: 1.125rem;
+}
+
+.audio-player {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
