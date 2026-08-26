@@ -462,4 +462,211 @@ dots.forEach((dot) => {
         startAutoSlide(10000);
     });
 });
-*/
+
+// ============================================
+// WebRTC 실시간 스트리밍 기능
+// ============================================
+
+// WebRTC 설정
+const webrtcConfig = {
+    iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun1.l.google.com:19302' }
+    ]
+};
+
+// 연결 상태
+const streamingState = {
+    isConnected: false,
+    roomId: null,
+    isStreaming: false,
+    localConnection: null,
+    remoteConnection: null
+};
+
+// DOM 요소
+const roomIdInput = document.getElementById('roomIdInput');
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const connectionStatus = document.getElementById('connectionStatus');
+const remoteVideo = document.getElementById('remoteVideo');
+const videoPlaceholder = document.getElementById('videoPlaceholder');
+const statusIndicator = document.querySelector('.status-indicator');
+const statusText = document.querySelector('.status-text');
+
+// WebRTC 연결 변수
+let localConnection = null;
+let remoteConnection = null;
+let dataChannel = null;
+
+// ============================================
+// WebRTC 기능
+// ============================================
+
+async function startStreaming() {
+    const roomId = roomIdInput.value.trim();
+    if (!roomId) {
+        alert('방 이름을 입력해주세요!');
+        return;
+    }
+
+    try {
+        updateStreamingStatus('connecting', '연결 설정 중...');
+
+        // 로컬 연결 생성
+        localConnection = new RTCPeerConnection(webrtcConfig);
+        streamingState.localConnection = localConnection;
+
+        // 데이터 채널 생성
+        dataChannel = localConnection.createDataChannel('control');
+
+        // 원격 연결 생성
+        remoteConnection = new RTCPeerConnection(webrtcConfig);
+        streamingState.remoteConnection = remoteConnection;
+
+        // ICE candidate 처리
+        localConnection.onicecandidate = handleLocalICECandidate;
+        remoteConnection.onicecandidate = handleRemoteICECandidate;
+
+        // 연결 상태 처리
+        localConnection.onconnectionstatechange = handleConnectionStateChange;
+        remoteConnection.onconnectionstatechange = handleConnectionStateChange;
+
+        // 원격 스트림 수신
+        remoteConnection.ontrack = handleRemoteTrack;
+
+        // 데이터 채널 수신
+        remoteConnection.ondatachannel = handleDataChannel;
+
+        // Offer 생성
+        const offer = await localConnection.createOffer();
+        await localConnection.setLocalDescription(offer);
+
+        // 연결 상태 업데이트
+        streamingState.roomId = roomId;
+        streamingState.isStreaming = true;
+
+        updateStreamingStatus('waiting', '연결 대기 중 - 휴대폰 접속 기다림...');
+
+        // 송출 시작 UI 표시
+        startBtn.style.display = 'none';
+        stopBtn.style.display = 'block';
+
+    } catch (error) {
+        console.error('연결 설정 실패:', error);
+        updateStreamingStatus('error', '연결 설정 실패');
+    }
+}
+
+async function stopStreaming() {
+    try {
+        if (localConnection) {
+            localConnection.close();
+        }
+        if (remoteConnection) {
+            remoteConnection.close();
+        }
+
+        localConnection = null;
+        remoteConnection = null;
+        dataChannel = null;
+
+        streamingState.isConnected = false;
+        streamingState.roomId = null;
+        streamingState.isStreaming = false;
+
+        updateStreamingStatus('offline', '연결 대기 중');
+
+        startBtn.style.display = 'block';
+        stopBtn.style.display = 'none';
+
+        if (remoteVideo.srcObject) {
+            remoteVideo.srcObject = null;
+        }
+
+        videoPlaceholder.style.display = 'flex';
+
+    } catch (error) {
+        console.error('연결 종료 실패:', error);
+    }
+}
+
+// ICE Candidate 처리
+async function handleLocalICECandidate(event) {
+    if (event.candidate && remoteConnection) {
+        try {
+            await remoteConnection.addIceCandidate(event.candidate);
+        } catch (error) {
+            console.error('ICE candidate 추가 실패:', error);
+        }
+    }
+}
+
+async function handleRemoteICECandidate(event) {
+    if (event.candidate && localConnection) {
+        try {
+            await localConnection.addIceCandidate(event.candidate);
+        } catch (error) {
+            console.error('ICE candidate 추가 실패:', error);
+        }
+    }
+}
+
+// 연결 상태 처리
+function handleConnectionStateChange() {
+    if (localConnection && localConnection.connectionState === 'connected') {
+        updateStreamingStatus('connected', '✅ 연결 완료');
+        streamingState.isConnected = true;
+    } else if (localConnection && localConnection.connectionState === 'disconnected') {
+        updateStreamingStatus('disconnected', '연결 끊김 - 재연결 시도 중...');
+        // 자동 재연결 로직 추가 가능
+    }
+}
+
+// 원격 스트림 수신
+function handleRemoteTrack(event) {
+    if (event.streams && event.streams[0]) {
+        remoteVideo.srcObject = event.streams[0];
+        videoPlaceholder.style.display = 'none';
+        updateStreamingStatus('streaming', '🎥 실시간 스트리밍 중');
+    }
+}
+
+// 데이터 채널 처리
+function handleDataChannel(event) {
+    const receiveChannel = event.channel;
+    receiveChannel.onmessage = (e) => {
+        const message = JSON.parse(e.data);
+        if (message.type === 'offer') {
+            handleRemoteOffer(message);
+        } else if (message.type === 'ice-candidate') {
+            handleRemoteICECandidate({ candidate: message.candidate });
+        }
+    };
+}
+
+// UI 상태 업데이트
+function updateStreamingStatus(status, message) {
+    if (statusIndicator && statusText) {
+        statusIndicator.className = `status-indicator status-${status}`;
+        statusText.textContent = message;
+    }
+}
+
+// 이벤트 리스너 등록
+if (startBtn) {
+    startBtn.addEventListener('click', startStreaming);
+}
+
+if (stopBtn) {
+    stopBtn.addEventListener('click', stopStreaming);
+}
+
+if (roomIdInput) {
+    roomIdInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') startStreaming();
+    });
+}
+
+console.log('WebRTC 스트리밍 기능이 로드되었습니다.');
+console.log('휴대폰과 발표용 노트북이 같은 방 이름으로 연결됩니다.');

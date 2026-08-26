@@ -374,6 +374,7 @@
                         <div class="dashboard-tabs">
                             <button class="tab-btn active" data-tab="elevator">엘리베이터</button>
                             <button class="tab-btn" data-tab="camera">현장 카메라</button>
+                            <button class="tab-btn" data-tab="phone">휴대폰 촬영</button>
                             <button class="tab-btn" data-tab="both">동시 보기</button>
                         </div>
                     </div>
@@ -400,6 +401,59 @@
                                 <div class="placeholder-icon">📹</div>
                                 <h4>실시간 현장 카메라</h4>
                                 <p>영상통화 연결 준비 중...</p>
+                            </div>
+                        </div>
+
+                        <!-- 휴대폰 촬영 탭 -->
+                        <div class="tab-content" id="phone-tab">
+                            <div class="phone-streaming-container">
+                                <!-- 연결 컨트롤 -->
+                                <div class="connection-controls">
+                                    <div class="connection-input-group">
+                                        <input type="text" id="roomIdInput" placeholder="방 이름 입력 (예: elevator-demo)" class="room-input">
+                                        <button id="startBtn" class="btn-primary stream-btn">📹 송출 시작</button>
+                                        <button id="stopBtn" class="btn-secondary stream-btn" style="display: none;">⏹️ 송출 종료</button>
+                                    </div>
+                                    <div class="connection-status" id="connectionStatus">
+                                        <span class="status-indicator status-offline"></span>
+                                        <span class="status-text">연결 대기 중</span>
+                                    </div>
+                                </div>
+
+                                <!-- 비디오 화면 -->
+                                <div class="video-container">
+                                    <video id="remoteVideo" autoplay playsinline class="remote-video"></video>
+                                    <div class="video-placeholder" id="videoPlaceholder">
+                                        <div class="placeholder-icon">📱</div>
+                                        <h4>휴대폰 영상 대기 중</h4>
+                                        <p>방 이름을 입력하고 송출을 시작하세요</p>
+                                    </div>
+                                </div>
+
+                                <!-- 사용 안내 -->
+                                <div class="streaming-guide">
+                                    <h4>📋 사용 방법</h4>
+                                    <div class="guide-step">
+                                        <span class="step-number">1</span>
+                                        <span class="step-text">방 이름 입력 (휴대폰과 발표용 노트북이 동일한 방명)</span>
+                                    </div>
+                                    <div class="guide-step">
+                                        <span class="step-number">2</span>
+                                        <span class="step-text">"송출 시작" 버튼 클릭</span>
+                                    </div>
+                                    <div class="guide-step">
+                                        <span class="step-number">3</span>
+                                        <span class="step-text">휴대폰에서 웹사이트 접속</span>
+                                    </div>
+                                    <div class="guide-step">
+                                        <span class="step-number">4</span>
+                                        <span class="step-text">같은 방 이름으로 연결</span>
+                                    </div>
+                                    <div class="guide-step">
+                                        <span class="step-number">5</span>
+                                        <span class="step-text">카메라로 촬영 시작</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -526,5 +580,7 @@
     </footer>
 
     <script src="modern-script.js"></script>
+    <script src="webrtc-streaming.js"></script>
+    <script src="webrtc-streaming.js"></script>
 </body>
 </html>

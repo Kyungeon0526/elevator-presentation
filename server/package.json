@@ -1,0 +1,16 @@
+{
+  "name": "elevator-signaling-server",
+  "version": "1.0.0",
+  "description": "WebSocket signaling server for elevator presentation streaming",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  },
+  "engines": {
+    "node": ">=14.x"
+  }
+}
