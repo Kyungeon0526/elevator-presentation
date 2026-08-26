@@ -4,7 +4,7 @@
 
 // URL 설정 (나중에 실제 URL로 변경하세요)
 const URLS = {
-    ELEVATOR: '', // 실시간 엘리베이터 모니터링 URL
+    ELEVATOR: 'https://joony167.github.io/elevator-floor/', // 실시간 엘리베이터 모니터링 URL
     CAMERA: 'https://meet.jit.si/elevator-demo-2024-08-24',   // Jitsi Meet 현장 카메라 URL
     VIDEO: '',    // 문제 정의 영상 URL
     WEBPAGE: '',  // 라이브 시연 웹페이지 URL
@@ -207,36 +207,6 @@ function updateVideoUrl(url) {
         videoPlaceholder.classList.remove('hidden');
     }
 }
-
-// ============================================
-// 실시간 데이터 시뮬레이션
-// ============================================
-
-function simulateLiveData() {
-    // 현재 층 (1~15층 랜덤)
-    const currentFloor = Math.floor(Math.random() * 15) + 1;
-    document.getElementById('currentFloor').textContent = currentFloor + '층';
-
-    // 방향 (상행/하행/정지)
-    const directions = ['상행', '하행', '정지'];
-    const direction = directions[Math.floor(Math.random() * directions.length)];
-    document.getElementById('direction').textContent = direction;
-
-    // 문 상태 (열림/닫힘)
-    const doorStates = ['열림', '닫힘'];
-    const doorState = doorStates[Math.floor(Math.random() * doorStates.length)];
-    document.getElementById('doorStatus').textContent = doorState;
-
-    // 오늘 운행 횟수
-    const todayRuns = Math.floor(Math.random() * 200) + 100;
-    document.getElementById('todayRuns').textContent = todayRuns + '회';
-}
-
-// 실시간 데이터 업데이트 (5초마다)
-setInterval(simulateLiveData, 5000);
-
-// 초기 데이터 설정
-simulateLiveData();
 
 // ============================================
 // 스크롤 애니메이션

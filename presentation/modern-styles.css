@@ -1005,9 +1005,21 @@ body {
     min-height: 500px;
 }
 
+/* 엘리베이터 탭 내 iframe 스타일 조정 */
+#elevator-tab iframe:first-child {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 1.5rem;
+}
+
 .tab-content {
     display: none;
-    height: 500px;
+    min-height: 500px;
+}
+
+/* 동시 보기 탭의 최소 높이 조정 */
+#both-tab {
+    min-height: 850px;
 }
 
 .tab-content.active {
@@ -1097,6 +1109,58 @@ body {
 
 .split-placeholder.hidden {
     display: none;
+}
+
+/* ============================================
+   다중 뷰 (4개 화면 그리드) 스타일
+   ============================================ */
+
+.multi-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    height: 800px;
+}
+
+.view-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    background: white;
+    height: 100%;
+}
+
+.view-label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+}
+
+.view-item iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .multi-view {
+        height: 1200px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
 }
 
 .live-stats {
@@ -1991,4 +2055,47 @@ body {
     color: var(--text-secondary);
     line-height: 1.7;
     font-size: 1rem;
+}
+
+/* ============================================
+   추가 모니터링 섹션 스타일
+   ============================================ */
+
+.additional-monitoring {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.monitoring-item {
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.monitoring-label {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.monitoring-item iframe {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .additional-monitoring {
+        grid-template-columns: 1fr;
+    }
 }

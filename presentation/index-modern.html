@@ -59,22 +59,6 @@
         <div class="container">
             <h2 class="section-title">❓ 문제 정의</h2>
 
-            <!-- 문제 상황 영상 -->
-            <div class="video-section">
-                <h3>📹 문제 상황 영상</h3>
-                <div class="video-container">
-                    <video id="problemVideo" controls style="width: 100%; max-width: 800px; height: auto; display: none;">
-                        <source src="피지컬AI_오프닝영상 (1)_워터마크제거.mp4" type="video/mp4">
-                        브라우저가 비디오를 지원하지 않습니다.
-                    </video>
-                    <div class="video-placeholder" id="videoPlaceholder">
-                        <div class="placeholder-icon">🎬</div>
-                        <h4>영상이 준비 중입니다</h4>
-                        <p>영상을 불러오고 있습니다...</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="problem-grid">
                 <div class="problem-card">
                     <div class="problem-icon">⏱️</div>
@@ -160,7 +144,7 @@
             <div class="hardware-grid">
                 <div class="hardware-card">
                     <div class="hardware-icon">📷</div>
-                    <h3>ESP32 카메라 (2대)</h3>
+                    <h3>ESP32S3 sense 2대</h3>
                     <p>승강장 상황 판단용 1대<br>층수 표시기 인식용 1대</p>
                 </div>
                 <div class="hardware-card">
@@ -175,7 +159,7 @@
                 </div>
                 <div class="hardware-card">
                     <div class="hardware-icon">🔌</div>
-                    <h3>ESP32-S3 Sense</h3>
+                    <h3>ESP32C6 2대</h3>
                     <p>메인 제어 보드</p>
                 </div>
             </div>
@@ -186,24 +170,20 @@
                     <thead>
                         <tr>
                             <th>구분</th>
-                            <th>주요 역할</th>
                             <th>핵심 기술</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>기능 1</strong></td>
-                            <td>AI 상황 판단 + 버튼 보조</td>
                             <td>AI 비전 인식, ESP-NOW 무선 통신, 서보모터 제어</td>
                         </tr>
                         <tr>
                             <td><strong>기능 2</strong></td>
-                            <td>층수 인식 + 실시간 웹 서비스</td>
                             <td>템플릿 매칭, Supabase, GitHub Pages</td>
                         </tr>
                         <tr>
                             <td><strong>기능 3</strong></td>
-                            <td>문 개방시간 및 정차 데이터 측정</td>
                             <td>초음파 센싱, CSV/웹 데이터 로깅, BEFORE/AFTER 비교</td>
                         </tr>
                     </tbody>
@@ -240,47 +220,6 @@
                     </div>
 
                     <div class="feature-details">
-                        <div class="detail-card">
-                            <div class="detail-icon">📱</div>
-                            <h4>현장 무선 조정 시스템</h4>
-                            <p>카메라(판단부)와 서보모터(실행부)를 분리 설치하고 ESP-NOW로 무선 연동합니다. 엘리베이터 배선을 건드리지 않고도 판단 결과를 실시간으로 전달합니다.</p>
-                        </div>
-
-                        <div class="detail-card warning">
-                            <div class="detail-icon">⚠️</div>
-                            <h4>카메라 각도 오작동 해결</h4>
-                            <p>사람이 보이거나 판단이 애매하면 절대 버튼을 누르지 않습니다. 오작동으로 인한 안전사고보다 "조금 늦게 닫히는 것"을 택하는 보수적 설계입니다.</p>
-                        </div>
-
-                        <div class="detail-card success">
-                            <div class="detail-icon">✨</div>
-                            <h4>기존 시스템 비침해</h4>
-                            <p>엘리베이터 제어반과 배선을 전혀 개조하지 않습니다. 승객이 직접 누르던 버튼을 서보모터가 물리적으로 대신 누를 뿐이라 탈부착만으로 설치·철거가 가능합니다.</p>
-                        </div>
-                    </div>
-
-                    <!-- 문제 및 해결 -->
-                    <div class="problem-solution-toggle">
-                        <button class="ps-toggle-btn" data-feature="1">문제점 및 해결 보기</button>
-                        <div class="problem-solution-content" id="problem-solution-1">
-                            <div class="ps-section">
-                                <h4 class="ps-title">🔴 문제점 — 카메라 각도 차이로 AI 판단이 흔들렸다</h4>
-                                <p class="ps-text">
-                                    • 학습 데이터 촬영 각도와 실제 설치 각도가 달랐음<br>
-                                    • 같은 상황도 카메라 각도에 따라 다르게 보임<br>
-                                    • 카메라 높이·기울기 차이로 사람과 문의 위치가 화면에서 달라짐<br>
-                                    • 이로 인해 AI 판단 결과가 흔들릴 수 있었음
-                                </p>
-                            </div>
-                            <div class="ps-section">
-                                <h4 class="ps-title">🟢 해결</h4>
-                                <p class="ps-text">
-                                    • 카메라 각도를 조금씩 바꿔가며 데이터 추가 수집<br>
-                                    • AP 화면에서 현재 카메라 구도를 직접 확인<br>
-                                    • 학습 당시 화면을 반투명 가이드로 겹쳐 실제 설치 각도 보정
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -315,44 +254,6 @@
                         </div>
 
                     </div>
-
-                    <!-- 문제 및 해결 -->
-                    <div class="problem-solution-toggle">
-                        <button class="ps-toggle-btn" data-feature="2">문제점 및 해결 보기</button>
-                        <div class="problem-solution-content" id="problem-solution-2">
-                            <div class="ps-section">
-                                <h4 class="ps-title">🔴 문제 1 — 기압센서의 불안정한 층수 판단</h4>
-                                <p class="ps-text">
-                                    • 초기에는 층마다 기압이 다르다는 점을 이용해 BMP 기압센서로 현재 층을 추정하려 했다<br>
-                                    • 하지만 층간 기압 차이가 작고, 문 개폐·환기·사람 이동·날씨 등에 따라 기압값이 변해<br>
-                                    • 같은 층에서도 측정값이 흔들리는 문제가 발생했다
-                                </p>
-                            </div>
-                            <div class="ps-section">
-                                <h4 class="ps-title">🟢 해결</h4>
-                                <p class="ps-text">
-                                    • 기압으로 층수를 간접적으로 추정하는 방식을 포기하고<br>
-                                    • 엘리베이터에 이미 정확하게 표시되고 있는 층수 표시기를 카메라로 직접 인식하는 방식으로 변경했다
-                                </p>
-                            </div>
-                            <div class="ps-section">
-                                <h4 class="ps-title">🔴 문제 2 — 정면 설치의 사용자 불편</h4>
-                                <p class="ps-text">
-                                    • 처음에는 7세그먼트의 각 점등 상태를 읽는 디코딩 방식을 검토했지만<br>
-                                    • 정확한 인식을 위해서는 카메라가 층수 표시기를 정면에서 바라봐야 했다<br>
-                                    • 이 경우 카메라가 층수 화면을 가려 승객의 시야를 방해하고 심미성이 떨어지는 문제가 있었다
-                                </p>
-                            </div>
-                            <div class="ps-section">
-                                <h4 class="ps-title">🟢 해결</h4>
-                                <p class="ps-text">
-                                    • 사용자에게 방해되지 않도록 카메라를 층수 표시기 위쪽에 설치해 위에서 아래로 촬영하도록 변경했다<br>
-                                    • 이 때문에 숫자가 왜곡되어 보였지만, 실제 설치 위치에서 보이는 각 층의 왜곡된 숫자를 직접 수집해 기준 이미지로 등록하고<br>
-                                    • Template Matching 방식으로 층수를 인식했다
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -375,51 +276,6 @@
                     </div>
 
                     <div class="feature-details">
-                        <div class="detail-card">
-                            <div class="detail-icon">📡</div>
-                            <h4>초음파 기반 거리 실시간 탐지</h4>
-                            <p>문을 닫는 AI 판단 시스템과는 완전히 독립된 센서입니다. 스스로 결과를 보고하지 않고, 제3자 센서가 객관적으로 검증합니다.</p>
-                        </div>
-
-                        <div class="detail-card warning">
-                            <div class="detail-icon">⏱️</div>
-                            <h4>문 개방시간 데이터 확보</h4>
-                            <p>시뮬레이션이 아닌 실제 운행 중인 엘리베이터에서 자동으로 지속 수집됩니다. 발표를 위한 일회성 측정이 아니라 지금도 계속 쌓이는 데이터입니다.</p>
-                        </div>
-
-                        <div class="detail-card success">
-                            <div class="detail-icon">✨</div>
-                            <h4>Before/After 정량 비교</h4>
-                            <p>장치 적용 전(A)과 적용 후(B)를 같은 장소·같은 조건에서 비교해 개방시간 감소를 수치로 보여줍니다. 감이 아니라 통계로 말합니다.</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-container">
-                        <video controls style="width: 100%; max-width: 600px; height: auto;">
-                            <source src="superwave.mp4" type="video/mp4">
-                            브라우저가 비디오를 지원하지 않습니다.
-                        </video>
-                    </div>
-
-                    <!-- 문제 및 해결 -->
-                    <div class="problem-solution-toggle">
-                        <button class="ps-toggle-btn" data-feature="3">문제점 및 해결 보기</button>
-                        <div class="problem-solution-content" id="problem-solution-3">
-                            <div class="ps-section">
-                                <h4 class="ps-title">🔴 문제점 1 — ToF 센서 배송 지연</h4>
-                                <p class="ps-text">
-                                    • 초기에는 ToF 센서를 이용해 문의 거리 변화를 측정할 계획이었지만<br>
-                                    • 센서 배송이 예상보다 늦어져 실험 및 데이터 수집 일정이 지연될 상황이 발생했다
-                                </p>
-                            </div>
-                            <div class="ps-section">
-                                <h4 class="ps-title">🟢 해결</h4>
-                                <p class="ps-text">
-                                    • 필요한 것은 특정 ToF 센서가 아니라 '문이 열리고 닫힐 때 발생하는 거리 변화를 측정하는 기능'이라고 다시 정의했다<br>
-                                    • 이에 기존에 보유하고 있던 초음파센서와 ESP32C6를 연결해 동일한 목적의 계측 시스템을 구현했다
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -437,40 +293,30 @@
                     <!-- A칸: Before -->
                     <div class="ab-test-column">
                         <div class="ab-test-header">
-                            <h3 class="ab-test-title">A (Before)</h3>
+                            <h3 class="ab-test-title">기능 적용 전</h3>
                             <span class="ab-test-badge">기존</span>
                         </div>
                         <div class="ab-test-image-container">
-                            <div class="ab-test-placeholder">
-                                <div class="placeholder-icon">📷</div>
-                                <h4>A칸 이미지</h4>
-                                <p>기존 상태 이미지를 넣어주세요</p>
-                            </div>
+                            <img src="A_Test.png" alt="A (Before) - 기존 상태" class="ab-test-image">
                         </div>
                         <div class="ab-test-info">
-                            <h4>📋 측정 조건</h4>
-                            <p>애드온 미적용 상태</p>
-                            <p>하루 동안 정차당 문 개방시간 및 누적 시간 측정</p>
+                            <h4>📋 측정 시간</h4>
+                            <p>08.24(11:00 ~ 20:00)</p>
                         </div>
                     </div>
 
                     <!-- B칸: After -->
                     <div class="ab-test-column">
                         <div class="ab-test-header">
-                            <h3 class="ab-test-title">B (After)</h3>
+                            <h3 class="ab-test-title">기능 적용 후</h3>
                             <span class="ab-test-badge">적용</span>
                         </div>
                         <div class="ab-test-image-container">
-                            <div class="ab-test-placeholder">
-                                <div class="placeholder-icon">📷</div>
-                                <h4>B칸 이미지</h4>
-                                <p>적용 후 이미지를 넣어주세요</p>
-                            </div>
+                            <img src="B_Test.png" alt="B (After) - 적용 상태" class="ab-test-image">
                         </div>
                         <div class="ab-test-info">
-                            <h4>📋 측정 조건</h4>
-                            <p>AI 문닫힘 보조 및 서보모터 동작</p>
-                            <p>하루 동안 개방시간 측정</p>
+                            <h4>📋 측정 시간</h4>
+                            <p>08.25(11:00 ~ 20:00)</p>
                         </div>
                     </div>
                 </div>
@@ -508,11 +354,11 @@
                     <div class="dashboard-content">
                         <!-- 엘리베이터 탭 -->
                         <div class="tab-content active" id="elevator-tab">
-                            <iframe id="elevatorIframe" src="" frameborder="0"></iframe>
-                            <div class="iframe-placeholder" id="elevatorPlaceholder">
+                            <iframe id="elevatorIframe" src="https://joony167.github.io/elevator-floor/" frameborder="0" style="width: 100%; height: 500px; border: none;"></iframe>
+                            <div class="iframe-placeholder" id="elevatorPlaceholder" style="display: none;">
                                 <div class="placeholder-icon">🌐</div>
                                 <h4>실시간 엘리베이터 모니터링</h4>
-                                <p>ELEVATOR_URL을 설정하면 실시간 데이터가 표시됩니다</p>
+                                <p>엘리베이터 실시간 층수 정보가 표시됩니다</p>
                             </div>
                         </div>
 
@@ -532,80 +378,26 @@
 
                         <!-- 동시 보기 탭 -->
                         <div class="tab-content" id="both-tab">
-                            <div class="split-view">
-                                <div class="split-item">
-                                    <div class="split-label">엘리베이터</div>
-                                    <iframe id="elevatorSplitIframe" src="" frameborder="0"></iframe>
-                                    <div class="split-placeholder" id="elevatorSplitPlaceholder">
-                                        <div class="placeholder-icon">🌐</div>
-                                        <p>엘리베이터 데이터</p>
-                                    </div>
+                            <div class="multi-view">
+                                <div class="view-item">
+                                    <div class="view-label">📍 엘리베이터</div>
+                                    <iframe src="https://joony167.github.io/elevator-floor/" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
                                 </div>
-                                <div class="split-item">
-                                    <div class="split-label">현장 카메라</div>
-                                    <iframe id="cameraSplitIframe"
-                                            src="https://meet.jit.si/elevator-demo-2024-08-24"
+                                <div class="view-item">
+                                    <div class="view-label">🤖 AI 판단</div>
+                                    <iframe src="https://joony167.github.io/elevator-floor/judge/" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+                                </div>
+                                <div class="view-item">
+                                    <div class="view-label">🚪 초음파 문</div>
+                                    <iframe src="https://joony167.github.io/elevator-floor/door/" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+                                </div>
+                                <div class="view-item">
+                                    <div class="view-label">📹 현장 카메라</div>
+                                    <iframe src="https://meet.jit.si/elevator-demo-2024-08-24"
                                             frameborder="0"
                                             allow="camera; microphone; fullscreen; display-capture; autoplay"
-                                            style="width: 100%; height: 400px; border: none;"></iframe>
-                                    <div class="split-placeholder" id="cameraSplitPlaceholder" style="display: none;">
-                                        <div class="placeholder-icon">📹</div>
-                                        <p>현장 카메라</p>
-                                    </div>
+                                            style="width: 100%; height: 100%; border: none;"></iframe>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 실시간 통계 -->
-                <div class="live-stats">
-                    <h3>📊 실시간 통계</h3>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-icon">📍</div>
-                            <div class="stat-content">
-                                <div class="stat-label">현재 층</div>
-                                <div class="stat-value" id="currentFloor">--</div>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">⬆️</div>
-                            <div class="stat-content">
-                                <div class="stat-label">방향</div>
-                                <div class="stat-value" id="direction">--</div>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">🚪</div>
-                            <div class="stat-content">
-                                <div class="stat-label">문 상태</div>
-                                <div class="stat-value" id="doorStatus">--</div>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">⏱️</div>
-                            <div class="stat-content">
-                                <div class="stat-label">오늘 운행</div>
-                                <div class="stat-value" id="todayRuns">--회</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="data-info">
-                        <h4>📡 데이터 수집 정보</h4>
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <span class="info-label">층수 인식:</span>
-                                <span class="info-value">현재 층, 필터링 처리된 층수, Supabase 연결 상태</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">AI 상황 판단:</span>
-                                <span class="info-value">현재 클래스, 신뢰도, 버튼 동작 여부</span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">서보 & 문 상태:</span>
-                                <span class="info-value">ESP-NOW 통신 상태, 서보 동작 상태, 초음파 측정 거리</span>
                             </div>
                         </div>
                     </div>
