@@ -1,0 +1,130 @@
+﻿// ============================================================
+// ESP32-S3OV3660 ?ㅼ뼇??? ?ㅼ젙
+// ============================================================
+
+// ? ?ㅼ젙 1: ESP32-S3-USB-OTG 湲곕낯
+#define PIN_CONFIG_1_PWDN_GPIO_NUM     -1
+#define PIN_CONFIG_1_RESET_GPIO_NUM    -1
+#define PIN_CONFIG_1_XCLK_GPIO_NUM     15
+#define PIN_CONFIG_1_SIOD_GPIO_NUM     4
+#define PIN_CONFIG_1_SIOC_GPIO_NUM     5
+#define PIN_CONFIG_1_Y9_GPIO_NUM       16
+#define PIN_CONFIG_1_Y8_GPIO_NUM       17
+#define PIN_CONFIG_1_Y7_GPIO_NUM       18
+#define PIN_CONFIG_1_Y6_GPIO_NUM       12
+#define PIN_CONFIG_1_Y5_GPIO_NUM       10
+#define PIN_CONFIG_1_Y4_GPIO_NUM       8
+#define PIN_CONFIG_1_Y3_GPIO_NUM       9
+#define PIN_CONFIG_1_Y2_GPIO_NUM       11
+#define PIN_CONFIG_1_VSYNC_GPIO_NUM    6
+#define PIN_CONFIG_1_HREF_GPIO_NUM    7
+#define PIN_CONFIG_1_PCLK_GPIO_NUM    13
+
+// ? ?ㅼ젙 2: ESP32-S3-Box ?좏삎
+#define PIN_CONFIG_2_PWDN_GPIO_NUM     -1
+#define PIN_CONFIG_2_RESET_GPIO_NUM    -1
+#define PIN_CONFIG_2_XCLK_GPIO_NUM     40
+#define PIN_CONFIG_2_SIOD_GPIO_NUM     18
+#define PIN_CONFIG_2_SIOC_GPIO_NUM     17
+#define PIN_CONFIG_2_Y9_GPIO_NUM       39
+#define PIN_CONFIG_2_Y8_GPIO_NUM       41
+#define PIN_CONFIG_2_Y7_GPIO_NUM       42
+#define PIN_CONFIG_2_Y6_GPIO_NUM       45
+#define PIN_CONFIG_2_Y5_GPIO_NUM       48
+#define PIN_CONFIG_2_Y4_GPIO_NUM       35
+#define PIN_CONFIG_2_Y3_GPIO_NUM       36
+#define PIN_CONFIG_2_Y2_GPIO_NUM       37
+#define PIN_CONFIG_2_VSYNC_GPIO_NUM    47
+#define PIN_CONFIG_2_HREF_GPIO_NUM    39
+#define PIN_CONFIG_2_PCLK_GPIO_NUM    21
+
+// ? ?ㅼ젙 3: OLIMEX ESP32-S3 ?좏삎
+#define PIN_CONFIG_3_PWDN_GPIO_NUM     -1
+#define PIN_CONFIG_3_RESET_GPIO_NUM    -1
+#define PIN_CONFIG_3_XCLK_GPIO_NUM     15
+#define PIN_CONFIG_3_SIOD_GPIO_NUM     4
+#define PIN_CONFIG_3_SIOC_GPIO_NUM     5
+#define PIN_CONFIG_3_Y9_GPIO_NUM       16
+#define PIN_CONFIG_3_Y8_GPIO_NUM       17
+#define PIN_CONFIG_3_Y7_GPIO_NUM       18
+#define PIN_CONFIG_3_Y6_GPIO_NUM       39
+#define PIN_CONFIG_3_Y5_GPIO_NUM       40
+#define PIN_CONFIG_3_Y4_GPIO_NUM       41
+#define PIN_CONFIG_3_Y3_GPIO_NUM       42
+#define PIN_CONFIG_3_Y2_GPIO_NUM       12
+#define PIN_CONFIG_3_VSYNC_GPIO_NUM    45
+#define PIN_CONFIG_3_HREF_GPIO_NUM    13
+#define PIN_CONFIG_3_PCLK_GPIO_NUM    48
+
+// ?꾩옱 ?ъ슜??? ?ㅼ젙 ?좏깮 (1, 2, 3 以??섎굹)
+#define USE_PIN_CONFIG 1
+
+// ?좏깮??? ?ㅼ젙 留ㅽ겕濡??뺤쓽
+#if USE_PIN_CONFIG == 1
+    #define PWDN_GPIO_NUM     PIN_CONFIG_1_PWDN_GPIO_NUM
+    #define RESET_GPIO_NUM    PIN_CONFIG_1_RESET_GPIO_NUM
+    #define XCLK_GPIO_NUM     PIN_CONFIG_1_XCLK_GPIO_NUM
+    #define SIOD_GPIO_NUM     PIN_CONFIG_1_SIOD_GPIO_NUM
+    #define SIOC_GPIO_NUM     PIN_CONFIG_1_SIOC_GPIO_NUM
+    #define Y9_GPIO_NUM       PIN_CONFIG_1_Y9_GPIO_NUM
+    #define Y8_GPIO_NUM       PIN_CONFIG_1_Y8_GPIO_NUM
+    #define Y7_GPIO_NUM       PIN_CONFIG_1_Y7_GPIO_NUM
+    #define Y6_GPIO_NUM       PIN_CONFIG_1_Y6_GPIO_NUM
+    #define Y5_GPIO_NUM       PIN_CONFIG_1_Y5_GPIO_NUM
+    #define Y4_GPIO_NUM       PIN_CONFIG_1_Y4_GPIO_NUM
+    #define Y3_GPIO_NUM       PIN_CONFIG_1_Y3_GPIO_NUM
+    #define Y2_GPIO_NUM       PIN_CONFIG_1_Y2_GPIO_NUM
+    #define VSYNC_GPIO_NUM    PIN_CONFIG_1_VSYNC_GPIO_NUM
+    #define HREF_GPIO_NUM    PIN_CONFIG_1_HREF_GPIO_NUM
+    #define PCLK_GPIO_NUM    PIN_CONFIG_1_PCLK_GPIO_NUM
+#elif USE_PIN_CONFIG == 2
+    #define PWDN_GPIO_NUM     PIN_CONFIG_2_PWDN_GPIO_NUM
+    #define RESET_GPIO_NUM    PIN_CONFIG_2_RESET_GPIO_NUM
+    #define XCLK_GPIO_NUM     PIN_CONFIG_2_XCLK_GPIO_NUM
+    #define SIOD_GPIO_NUM     PIN_CONFIG_2_SIOD_GPIO_NUM
+    #define SIOC_GPIO_NUM     PIN_CONFIG_2_SIOC_GPIO_NUM
+    #define Y9_GPIO_NUM       PIN_CONFIG_2_Y9_GPIO_NUM
+    #define Y8_GPIO_NUM       PIN_CONFIG_2_Y8_GPIO_NUM
+    #define Y7_GPIO_NUM       PIN_CONFIG_2_Y7_GPIO_NUM
+    #define Y6_GPIO_NUM       PIN_CONFIG_2_Y6_GPIO_NUM
+    #define Y5_GPIO_NUM       PIN_CONFIG_2_Y5_GPIO_NUM
+    #define Y4_GPIO_NUM       PIN_CONFIG_2_Y4_GPIO_NUM
+    #define Y3_GPIO_NUM       PIN_CONFIG_3_Y3_GPIO_NUM
+    #define Y2_GPIO_NUM       PIN_CONFIG_2_Y2_GPIO_NUM
+    #define VSYNC_GPIO_NUM    PIN_CONFIG_2_VSYNC_GPIO_NUM
+    #define HREF_GPIO_NUM    PIN_CONFIG_2_HREF_GPIO_NUM
+    #define PCLK_GPIO_NUM    PIN_CONFIG_2_PCLK_GPIO_NUM
+#elif USE_PIN_CONFIG == 3
+    #define PWDN_GPIO_NUM     PIN_CONFIG_3_PWDN_GPIO_NUM
+    #define RESET_GPIO_NUM    PIN_CONFIG_3_RESET_GPIO_NUM
+    #define XCLK_GPIO_NUM     PIN_CONFIG_3_XCLK_GPIO_NUM
+    #define SIOD_GPIO_NUM     PIN_CONFIG_3_SIOD_GPIO_NUM
+    #define SIOC_GPIO_NUM     PIN_CONFIG_3_SIOC_GPIO_NUM
+    #define Y9_GPIO_NUM       PIN_CONFIG_3_Y9_GPIO_NUM
+    #define Y8_GPIO_NUM       PIN_CONFIG_3_Y8_GPIO_NUM
+    #define Y7_GPIO_NUM       PIN_CONFIG_3_Y7_GPIO_NUM
+    #define Y6_GPIO_NUM       PIN_CONFIG_3_Y6_GPIO_NUM
+    #define Y5_GPIO_NUM       PIN_CONFIG_3_Y5_GPIO_NUM
+    #define Y4_GPIO_NUM       PIN_CONFIG_3_Y4_GPIO_NUM
+    #define Y3_GPIO_NUM       PIN_CONFIG_3_Y3_GPIO_NUM
+    #define Y2_GPIO_NUM       PIN_CONFIG_3_Y2_GPIO_NUM
+    #define VSYNC_GPIO_NUM    PIN_CONFIG_3_VSYNC_GPIO_NUM
+    #define HREF_GPIO_NUM    PIN_CONFIG_3_HREF_GPIO_NUM
+    #define PCLK_GPIO_NUM    PIN_CONFIG_3_PCLK_GPIO_NUM
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

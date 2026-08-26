@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 카메라 디버깅 - 숫자 인식 테스트</title>
+    <link rel="stylesheet" href="debug.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📷 ESP32 카메라 디버깅</h1>
+            <p class="subtitle">실시간 숫자 인식 테스트</p>
+        </header>
+
+        <main>
+            <div class="config-panel">
+                <h2>⚙️ 설정</h2>
+                <div class="config-item">
+                    <label for="esp32-url">ESP32 URL:</label>
+                    <input type="text" id="esp32-url" value="http://192.168.1.100" placeholder="http://192.168.x.x">
+                </div>
+                <div class="config-item">
+                    <label for="update-interval">업데이트 주기 (ms):</label>
+                    <input type="number" id="update-interval" value="1000" min="100" max="5000">
+                </div>
+                <div class="config-buttons">
+                    <button id="connect-btn" class="btn btn-primary">연결</button>
+                    <button id="disconnect-btn" class="btn btn-secondary" disabled>연결 해제</button>
+                    <button id="capture-once-btn" class="btn btn-info">단일 캡처</button>
+                </div>
+                <div class="connection-status">
+                    <span id="status-indicator" class="status-indicator disconnected"></span>
+                    <span id="status-text">연결 대기 중</span>
+                </div>
+            </div>
+
+            <div class="content-wrapper">
+                <!-- 왼쪽: 카메라 영역 -->
+                <div class="camera-section">
+                    <div class="camera-card">
+                        <h3>📸 원본 카메라 이미지</h3>
+                        <div class="image-container">
+                            <img id="camera-image" src="" alt="카메라 이미지" class="camera-frame">
+                            <div id="camera-loading" class="loading-spinner" style="display: none;">
+                                <div class="spinner"></div>
+                                <p>이미지 로딩 중...</p>
+                            </div>
+                            <div id="camera-error" class="error-message" style="display: none;">
+                                <p>이미지를 불러올 수 없습니다</p>
+                            </div>
+                        </div>
+                        <div class="image-info">
+                            <span id="image-timestamp">--:--:--</span>
+                            <span id="image-resolution">-- x --</span>
+                        </div>
+                    </div>
+
+                    <div class="recognition-card">
+                        <h3>🔢 숫자 인식 결과</h3>
+                        <div class="result-display">
+                            <div class="result-number" id="result-number">?</div>
+                            <div class="result-confidence" id="result-confidence">신뢰도: --%</div>
+                        </div>
+                        <div class="result-details">
+                            <div class="detail-item">
+                                <span class="detail-label">인식 상태:</span>
+                                <span class="detail-value" id="recognition-status">대기 중</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">처리 시간:</span>
+                                <span class="detail-value" id="processing-time">-- ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 오른쪽: 세그먼트 분석 및 로그 -->
+                <div class="analysis-section">
+                    <div class="segment-card">
+                        <h3>7-Segment 세그먼트 분석</h3>
+                        <div class="segment-display">
+                            <div class="segment-viz">
+                                <!-- 상단 -->
+                                <div class="segment segment-a" id="seg-a" data-name="A (상단)"></div>
+                                <div class="segment-row">
+                                    <div class="segment segment-f" id="seg-f" data-name="F (좌상)"></div>
+                                    <div class="segment-hole"></div>
+                                    <div class="segment segment-b" id="seg-b" data-name="B (우상)"></div>
+                                </div>
+                                <div class="segment segment-g" id="seg-g" data-name="G (중앙)"></div>
+                                <div class="segment-row">
+                                    <div class="segment segment-e" id="seg-e" data-name="E (좌하)"></div>
+                                    <div class="segment-hole"></div>
+                                    <div class="segment segment-c" id="seg-c" data-name="C (우하)"></div>
+                                </div>
+                                <!-- 하단 -->
+                                <div class="segment segment-d" id="seg-d" data-name="D (하단)"></div>
+                            </div>
+                            <div class="segment-values">
+                                <div class="segment-value" id="seg-a-val">A: --</div>
+                                <div class="segment-value" id="seg-b-val">B: --</div>
+                                <div class="segment-value" id="seg-c-val">C: --</div>
+                                <div class="segment-value" id="seg-d-val">D: --</div>
+                                <div class="segment-value" id="seg-e-val">E: --</div>
+                                <div class="segment-value" id="seg-f-val">F: --</div>
+                                <div class="segment-value" id="seg-g-val">G: --</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="log-card">
+                        <h3>📋 인식 로그</h3>
+                        <div class="log-controls">
+                            <button id="clear-log-btn" class="btn btn-small">로그 지우기</button>
+                            <label>
+                                <input type="checkbox" id="auto-scroll" checked>
+                                자동 스크롤
+                            </label>
+                        </div>
+                        <div class="log-container" id="log-container">
+                            <div class="log-entry log-info">
+                                <span class="log-time">--:--:--</span>
+                                <span class="log-message">디버깅 시스템 준비 완료</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단: 통계 -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">총 캡처 횟수</div>
+                        <div class="stat-value" id="total-captures">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">성공 인식</div>
+                        <div class="stat-value success" id="successful-captures">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">실패 인식</div>
+                        <div class="stat-value error" id="failed-captures">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">평균 처리 시간</div>
+                        <div class="stat-value" id="avg-processing-time">-- ms</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">인식 성공률</div>
+                        <div class="stat-value" id="success-rate">--%</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>ESP32-Sense 카메라 디버깅 페이지 | 7-Segment 숫자 인식 테스트</p>
+        </footer>
+    </div>
+
+    <script src="debug.js"></script>
+</body>
+</html>

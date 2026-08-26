@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 연결 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .test-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ddd;
+        }
+        .success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        .error {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+        .pending {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        input {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .result-detail {
+            font-family: monospace;
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 ESP32 연결 진단 도구</h1>
+
+        <div class="input-group">
+            <label for="esp32-url">ESP32 URL:</label><br>
+            <input type="text" id="esp32-url" value="http://192.168.1.100" placeholder="http://192.168.1.100">
+            <button id="test-btn" onclick="runTests()">연결 테스트</button>
+        </div>
+
+        <div class="results" id="results">
+            <div class="test-item pending">
+                <strong>상태:</strong> 테스트 대기 중...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function runTests() {
+            const esp32Url = document.getElementById('esp32-url').value.trim();
+            const resultsDiv = document.getElementById('results');
+            const testBtn = document.getElementById('test-btn');
+
+            if (!esp32Url) {
+                alert('ESP32 URL을 입력해주세요');
+                return;
+            }
+
+            testBtn.disabled = true;
+            resultsDiv.innerHTML = '';
+
+            // 테스트 1: 루트 엔드포인트
+            await testEndpoint(esp32Url, '루트 엔드포인트 (/)', async () => {
+                const response = await fetch(esp32Url);
+                const text = await response.text();
+                return { status: response.status, preview: text.substring(0, 100) };
+            });
+
+            // 테스트 2: API 상태
+            await testEndpoint(`${esp32Url}/api/status`, 'API 상태 (/api/status)', async () => {
+                const response = await fetch(`${esp32Url}/api/status`);
+                const data = await response.json();
+                return data;
+            });
+
+            // 테스트 3: 세그먼트 API
+            await testEndpoint(`${esp32Url}/api/segments`, '세그먼트 API (/api/segments)', async () => {
+                const response = await fetch(`${esp32Url}/api/segments`);
+                const data = await response.json();
+                return data;
+            });
+
+            // 테스트 4: 카메라 캡처
+            await testEndpoint(`${esp32Url}/capture`, '카메라 캡처 (/capture)', async () => {
+                const response = await fetch(`${esp32Url}/capture`);
+                return {
+                    status: response.status,
+                    contentType: response.headers.get('Content-Type'),
+                    contentLength: response.headers.get('Content-Length')
+                };
+            });
+
+            testBtn.disabled = false;
+
+            // 요약
+            addResult('요약', '✅ 모든 테스트 완료! debug.html 페이지에서 사용하세요.', 'success');
+        }
+
+        async function testEndpoint(url, name, testFunction) {
+            const resultsDiv = document.getElementById('results');
+
+            addResult(name, '⏳ 테스트 중...', 'pending');
+
+            try {
+                const result = await testFunction();
+                addResult(name, `✅ 성공`, 'success');
+
+                if (typeof result === 'object') {
+                    const detailDiv = document.createElement('div');
+                    detailDiv.className = 'result-detail';
+                    detailDiv.textContent = JSON.stringify(result, null, 2);
+                    resultsDiv.lastElementChild.appendChild(detailDiv);
+                }
+            } catch (error) {
+                addResult(name, `❌ 실패: ${error.message}`, 'error');
+            }
+        }
+
+        function addResult(name, message, status) {
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-item ${status}`;
+            resultDiv.innerHTML = `<strong>${name}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+    </script>
+</body>
+</html>

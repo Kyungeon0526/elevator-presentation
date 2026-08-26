@@ -1,0 +1,33 @@
+# ESP32 WiFi 설정 파일
+# 이 파일의 내용으로 elevator_camera.ino를 수정하세요
+
+# WiFi 정보를 여기에 입력하세요:
+SSID: "YOUR_WIFI_SSID"
+PASSWORD: "YOUR_WIFI_PASSWORD"
+
+# Arduino CLI 사용법:
+
+# 1. WiFi 설정 수정
+# elevator_camera.ino 파일에서 13-14번째 줄을 수정하세요:
+# const char* ssid = "와이파이이름";
+# const char* password = "와이파이비밀번호";
+
+# 2. ESP32 코어 설치 (완료 대기 중)
+# arduino-cli core install esp32:esp32
+
+# 3. 라이브러리 설치
+# arduino-cli lib install WiFi
+
+# 4. 코드 컴파일
+# arduino-cli compile --fqbn esp32:esp32:esp32cam elevator_camera.ino
+
+# 5. 업로드 (GPIO0을 GND에 연결한 상태에서)
+# arduino-cli upload -p COM7 --fqbn esp32:esp32:esp32cam elevator_camera.ino
+
+# 6. GPIO0 연결 해제 후 리셋
+
+# 7. IP 확인 (시리얼 모니터)
+# arduino-cli monitor -p COM7 -c baudrate=115200
+
+# 8. 웹사이트 접속
+# 브라우저에서 http://192.168.0.xxx 접속
