@@ -1,0 +1,501 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 부경대 색상 - 편안한 파스텔 톤으로 변경 */
+    --pukyong-red: #FFB6C1;       /* 연한 핑크 */
+    --pukyong-blue: #87CEEB;      /* 스카이 블루 */
+    --pukyong-light: #F0F8FF;     /* 앨리스 블루 */
+    --gradient-start: #FFB6C1;
+    --gradient-end: #FFA07A;
+    --pastel-pink: #FFC0CB;
+    --pastel-blue: #ADD8E6;
+    --pastel-purple: #DDA0DD;
+    --soft-gray: #F5F5F5;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #87CEEB 0%, #DDA0DD 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+    pointer-events: none;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    opacity: 0.9;
+    font-size: 0.9em;
+}
+
+main {
+    padding: 30px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.elevator-shaft-container {
+    flex: 0 0 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-container {
+    flex: 1;
+    min-width: 0; /* 플렉스 아이템 오버플로우 방지 */
+    width: 100%;
+}
+
+.status-bar.vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.status-bar.vertical .status-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    border: 2px solid #e9ecef;
+    min-width: 160px;
+}
+
+.status-bar {
+    display: none; /* 기존 수평 상태바 숨김 */
+}
+
+/* 대시보드 스타일 */
+.dashboard {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    border: 2px solid #e9ecef;
+}
+
+.dashboard h2 {
+    color: var(--pastel-blue);
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--pastel-blue);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+    font-size: 2em;
+    opacity: 0.8;
+}
+
+.stat-content {
+    flex: 1;
+    min-width: 0; /* 플렉스 아이템 오버플로우 방지 */
+}
+
+.stat-label {
+    font-size: 0.85em;
+    color: #87A8A8;
+    margin-bottom: 2px;
+    white-space: nowrap; /* 한 줄로 표시 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--pastel-blue);
+    white-space: nowrap; /* 한 줄로 표시 */
+}
+
+.usage-chart h3 {
+    color: var(--pastel-purple);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+#hourly-usage {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.usage-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.usage-label {
+    width: 80px;
+    font-size: 0.9em;
+    color: #495057;
+}
+
+.usage-bar-container {
+    flex: 2;
+    min-width: 200px;
+    background: #e9ecef;
+    border-radius: 8px;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.usage-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-purple));
+    border-radius: 8px;
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.usage-count {
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.peak-hour {
+    background: linear-gradient(90deg, var(--pastel-purple), #B0C4DE);
+}
+
+.status-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 2px solid #e9ecef;
+}
+
+.status-item .label {
+    display: block;
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.status-item .value {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #495057;
+}
+
+#direction {
+    font-size: 2em;
+}
+
+#status.connected {
+    color: #28a745;
+}
+
+#status.moving {
+    color: #17a2b8;
+}
+
+#status.stopped {
+    color: #6c757d;
+}
+
+.elevator-shaft {
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 3px solid var(--pastel-blue);
+    border-radius: 12px;
+    padding: 15px;
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(135, 206, 235, 0.2);
+}
+
+#floors-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.floor {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(173, 216, 230, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.floor:last-child {
+    border-bottom: none;
+}
+
+.floor:hover {
+    background: linear-gradient(90deg, rgba(173, 216, 230, 0.2) 0%, rgba(221, 160, 221, 0.1) 100%);
+    transform: translateX(5px);
+}
+
+.floor.current-floor {
+    background: linear-gradient(90deg, rgba(135, 206, 235, 0.3) 0%, rgba(221, 160, 221, 0.2) 100%);
+    border-left: 3px solid var(--pastel-blue);
+}
+
+/* 층별 색상 구분 */
+.floor:nth-child(odd) {
+    background: linear-gradient(90deg, rgba(255, 248, 220, 0.1) 0%, rgba(255, 228, 225, 0.1) 100%);
+}
+
+.floor:nth-child(even) {
+    background: linear-gradient(90deg, rgba(240, 248, 255, 0.1) 0%, rgba(230, 230, 250, 0.1) 100%);
+}
+
+.floor-label {
+    width: 70px;
+    font-weight: bold;
+    color: #495057;
+    font-size: 1.2em;
+}
+
+.floor-marker {
+    margin-left: auto;
+}
+
+.elevator-indicator {
+    width: 65px;
+    height: 85px;
+    position: relative;
+    background: linear-gradient(180deg, #FFB6C1 0%, #FFA07A 50%, #FFB6C1 100%);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(255, 176, 122, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 182, 193, 0.3);
+    animation: elevatorMove 2s infinite, elevatorGlow 3s infinite;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+/* 엘리베이터 문 */
+.elevator-indicator::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 53px;
+    height: 73px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.3) 100%);
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 엘리베이터 창문 */
+.elevator-indicator::after {
+    content: '🛗';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.8em;
+    opacity: 0.9;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* 엘리베이터 움직임 애니메이션 */
+@keyframes elevatorMove {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* 엘리베이터 글로우 효과 */
+@keyframes elevatorGlow {
+    0%, 100% {
+        box-shadow: 0 6px 20px rgba(255, 176, 122, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 182, 193, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(255, 176, 122, 0.7), inset 0 2px 8px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 182, 193, 0.5);
+    }
+}
+
+/* 엘리베이터 문 열기/닫기 효과 */
+.elevator-indicator.moving {
+    animation: elevatorMoving 0.5s ease-in-out;
+}
+
+@keyframes elevatorMoving {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(255, 192, 203, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(255, 192, 203, 0.6);
+    }
+}
+
+.last-update {
+    text-align: center;
+    margin-top: 15px;
+    color: #6c757d;
+    font-size: 0.85em;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+footer {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.85em;
+    border-top: 1px solid #e9ecef;
+}
+
+/* 방향 아이콘 색상 - 편안한 파스텔 톤 */
+.direction-up {
+    color: var(--pastel-blue);
+}
+
+.direction-down {
+    color: var(--pastel-purple);
+}
+
+.direction-stopped {
+    color: #B0C4DE;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .elevator-shaft-container {
+        flex: none;
+        width: 100%;
+    }
+
+    .dashboard-container {
+        width: 100%;
+    }
+
+    .status-bar.vertical {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .status-bar.vertical .status-item {
+        flex: 1;
+        min-width: auto;
+    }
+
+    .dashboard-stats {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .elevator-shaft {
+        height: 400px;
+    }
+
+    .container {
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .status-bar.vertical .status-item .value {
+        font-size: 1.2em;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+}
