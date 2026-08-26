@@ -37,6 +37,7 @@ const WEBSITE_URL = ''; // 예: 'http://192.168.1.100:8080' 또는 'http://local
 // ============================================
 const WEBPAGE_URL = '';  // 우리가 만든 웹페이지 URL
 const PHONE_URL = '';     // 스마트폰 중계 화면 URL (WebSocket 등)
+const ZOOM_URL = '';      // Zoom 미팅 링크 (예: 'https://us05web.zoom.us/j/123456789')
 
 // ============================================
 // 문제 정의 영상 URL 설정 (나중에 실제 URL로 변경하세요)

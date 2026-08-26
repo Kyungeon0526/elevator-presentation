@@ -5,7 +5,7 @@
 // URL 설정 (나중에 실제 URL로 변경하세요)
 const URLS = {
     ELEVATOR: 'https://joony167.github.io/elevator-floor/', // 실시간 엘리베이터 모니터링 URL
-    CAMERA: 'https://meet.jit.si/elevator-demo-2024-08-24',   // Jitsi Meet 현장 카메라 URL
+    CAMERA: '',   // Zoom 미팅 링크 (Zoom 링크를 입력하세요)
     VIDEO: '',    // 문제 정의 영상 URL
     WEBPAGE: '',  // 라이브 시연 웹페이지 URL
     PHONE: ''     // 스마트폰 중계 화면 URL
