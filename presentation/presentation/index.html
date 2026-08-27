@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트 엘리베이터 자동화 시스템</title>
+    <link rel="stylesheet" href="modern-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 고정 네비게이션 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">🏢</div>
+                <div class="logo-text">
+                    <span class="logo-main">Smart Elevator</span>
+                    <span class="logo-sub">Automation System</span>
+                </div>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link">홈</a>
+                <a href="#problem" class="nav-link">문제 정의</a>
+                <a href="#overview" class="nav-link">개요</a>
+                <a href="#hardware" class="nav-link">하드웨어</a>
+                <a href="#features" class="nav-link">기능</a>
+                <a href="#ab-test" class="nav-link">A/B 테스트</a>
+                <a href="#demo" class="nav-link">실시간 시연</a>
+                <a href="#results" class="nav-link">결과</a>
+                <a href="#future" class="nav-link">추후 계획</a>
+            </div>
+
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section id="hero" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">스마트 엘리베이터<br>자동화 시스템</h1>
+                <p class="hero-subtitle">AI 비전 인식과 IoT 기술로 엘리베이터 운행 효율을 혁신합니다</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn-primary">실시간 시연 보기</a>
+                    <a href="#overview" class="btn-secondary">프로젝트 소개</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave"></div>
+    </section>
+
+    <!-- 문제 정의 섹션 -->
+    <section id="problem" class="section">
+        <div class="container">
+            <h2 class="section-title">❓ 문제 정의</h2>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⏱️</div>
+                    <h3>불필요한 시간 낭비</h3>
+                    <p>위층에서 1층으로 내려가는 중, 중간층에서 사람이 내린 뒤에도 엘리베이터 문이 <strong>약 13초 이상 불필요하게 열려 있음</strong></p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📦</div>
+                    <h3>불편한 사용 환경</h3>
+                    <p>더 탈 사람이 없음에도 문이 오랫동안 열려 있어 탑승자가 <strong>매번 직접 닫힘 버튼을 눌러야 함</strong></p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🚧</div>
+                    <h3>현실적 제약</h3>
+                    <p>기존 엘리베이터 제어반을 직접 개조하거나 시스템을 수정하는 것은 불가능</p>
+                </div>
+            </div>
+
+            <!-- 동영상 영역 -->
+            <div class="problem-video-container">
+                <h3>📹 문제 상황 영상</h3>
+                <div class="video-wrapper">
+                    <video id="problemVideo" controls style="width: 100%; max-height: 400px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <source src="피지컬AI_오프닝영상 (1)_워터마크제거.mp4" type="video/mp4">
+                        브라우저가 비디오를 지원하지 않습니다.
+                    </video>
+                </div>
+            </div>
+
+            <div class="timing-image">
+                <img src="final_graph.png" alt="엘리베이터 타이밍 분석" class="result-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 개요 섹션 -->
+    <section id="overview" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">🎯 프로젝트 개요</h2>
+            <div class="overview-content">
+                <!-- 인터뷰 조사 -->
+                <div class="interview-section">
+                    <h3>📋 인터뷰 조사</h3>
+                    <div class="interview-image">
+                        <img src="problem_definition.png" alt="문제 정의 인터뷰 조사">
+                    </div>
+                    <div class="interview-image">
+                        <img src="define_problem.png" alt="문제 정의 분석">
+                    </div>
+                </div>
+
+                <!-- 목표 -->
+                <div class="goal-section">
+                    <!-- 인터뷰 녹음 -->
+                    <div class="interview-audio">
+                        <h4>🎙️ 기숙사 인터뷰 녹음</h4>
+                        <audio controls class="audio-player">
+                            <source src="기숙사 인터뷰 녹음본.m4a" type="audio/mp4">
+                            브라우저가 오디오를 지원하지 않습니다.
+                        </audio>
+                    </div>
+
+                    <h3>🎯 우리의 목표</h3>
+                    <div class="goal-box">
+                        <p class="goal-text">엘리베이터를 효율적으로 운행시켜 대기 시간을 줄이자</p>
+                    </div>
+                </div>
+
+                <div class="system-flow">
+                    <div class="flow-item">
+                        <div class="flow-number">1</div>
+                        <div class="flow-content">
+                            <h4>기능 1 (자동 제어)</h4>
+                            <p>상황 판단 이후 동작</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-number">2</div>
+                        <div class="flow-content">
+                            <h4>기능 2 (정보 제공)</h4>
+                            <p>실시간 엘리베이터 위치 정보 제공 사이트</p>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-number">3</div>
+                        <div class="flow-content">
+                            <h4>기능 3 (효과 검증)</h4>
+                            <p>문 개방 시간 측정 ➔ 데이터 검증</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 하드웨어 섹션 -->
+    <section id="hardware" class="section">
+        <div class="container">
+            <h2 class="section-title">⚙️ 하드웨어 구성</h2>
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-icon">📷</div>
+                    <h3>ESP32S3 sense 2대</h3>
+                    <p>승강장 상황 판단용 1대<br>층수 표시기 인식용 1대</p>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-icon">⚙️</div>
+                    <h3>서보모터 (1개)</h3>
+                    <p>기존 닫힘 버튼 물리 조작용</p>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-icon">📡</div>
+                    <h3>초음파센서 (1개)</h3>
+                    <p>독립적인 문 상태 및<br>개방시간 측정용</p>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-icon">🔌</div>
+                    <h3>ESP32C6 2대</h3>
+                    <p>메인 제어 보드</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 기능 섹션 -->
+    <section id="features" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">🔧 핵심 기능</h2>
+
+            <!-- 기능 1 -->
+            <div class="feature-block">
+                <div class="feature-header feature-toggle" data-feature="1">
+                    <h3>기능 1 - 닫힘 버튼 자동 누름</h3>
+                    <span class="feature-badge">AI 상황 판단 + 버튼 보조</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-flow">
+                        <div class="flow-step">카메라 촬영</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">AI 상황 판단</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">닫힘 여부 결정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">ESP-NOW 전송</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">서보모터 동작</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">닫힘 버튼 압박</div>
+                    </div>
+
+                    <div class="feature-details">
+                        <!-- 모터 이미지 -->
+                        <div class="detail-item image-full">
+                            <h4>⚙️ 서보모터 구성</h4>
+                            <img src="motor.jpg" alt="서보모터 구성도" class="feature-image">
+                        </div>
+
+                        <!-- 실시간 웹사이트 미리보기 -->
+                        <div class="detail-item web-preview-full">
+                            <h4>📺 실시간 웹사이트 미리보기</h4>
+                            <div class="web-preview">
+                                <iframe src="https://joony167.github.io/elevator-floor/judge/" frameborder="0" class="web-iframe"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 기능 2 -->
+            <div class="feature-block">
+                <div class="feature-header feature-toggle" data-feature="2">
+                    <h3>기능 2 - 실시간 층수 확인</h3>
+                    <span class="feature-badge">층수 디텍팅 + 웹 서비스</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-flow">
+                        <div class="flow-step">ESP32 카메라 촬영</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Template Matching</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">층수 오류 보정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Supabase 전송</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">웹사이트 실시간 표시</div>
+                    </div>
+
+                    <div class="feature-details">
+                        <!-- 실시간 층수 이미지 -->
+                        <div class="detail-item image-full">
+                            <h4>🏢 실시간 층수 확인 시스템</h4>
+                            <img src="realtime_floor.jpg" alt="실시간 층수 확인 시스템" class="feature-image">
+                        </div>
+
+                        <!-- 실시간 웹사이트 미리보기 -->
+                        <div class="detail-item web-preview-full">
+                            <h4>📺 실시간 웹사이트 미리보기</h4>
+                            <div class="web-preview">
+                                <iframe src="https://joony167.github.io/elevator-floor/" frameborder="0" class="web-iframe"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 기능 3 -->
+            <div class="feature-block">
+                <div class="feature-header feature-toggle" data-feature="3">
+                    <h3>기능 3 - 데이터 기반 문 개방시간 측정</h3>
+                    <span class="feature-badge">초음파 센서 + 데이터 검증</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="feature-content">
+                    <div class="feature-flow">
+                        <div class="flow-step">초음파센서 거리 측정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">OPEN/CLOSED 판단</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">문 개방시간 측정</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">A/B 테스트 데이터 확보</div>
+                    </div>
+
+                    <div class="feature-details">
+                        <!-- 초음파 센서 이미지 -->
+                        <div class="detail-item image-full">
+                            <h4>📡 초음파 센서 시스템</h4>
+                            <img src="supersuper.jpg" alt="초음파 센서 시스템" class="feature-image">
+                        </div>
+
+                        <!-- 실시간 웹사이트 미리보기 -->
+                        <div class="detail-item web-preview-full">
+                            <h4>📺 실시간 웹사이트 미리보기</h4>
+                            <div class="web-preview">
+                                <iframe src="https://joony167.github.io/elevator-floor/door/" frameborder="0" class="web-iframe"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A/B 테스트 시뮬레이션 결과 섹션 -->
+    <section id="ab-test" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">📊 A/B 테스트 시뮬레이션 결과</h2>
+            <p class="section-subtitle">기능 3 적용 전후의 데이터 비교 결과</p>
+
+            <div class="ab-test-container">
+                <div class="ab-test-grid">
+                    <!-- A칸: Before -->
+                    <div class="ab-test-column">
+                        <div class="ab-test-header">
+                            <h3 class="ab-test-title">기능 적용 전</h3>
+                            <span class="ab-test-badge">기존</span>
+                        </div>
+                        <div class="ab-test-image-container">
+                            <img src="A_Test.png" alt="A (Before) - 기존 상태" class="ab-test-image">
+                        </div>
+                        <div class="ab-test-info">
+                            <h4>📋 측정 시간</h4>
+                            <p>08.24(11:00 ~ 20:00)</p>
+                        </div>
+                    </div>
+
+                    <!-- B칸: After -->
+                    <div class="ab-test-column">
+                        <div class="ab-test-header">
+                            <h3 class="ab-test-title">기능 적용 후</h3>
+                            <span class="ab-test-badge">적용</span>
+                        </div>
+                        <div class="ab-test-image-container">
+                            <img src="final_ab.png" alt="B (After) - 적용 상태" class="ab-test-image">
+                        </div>
+                        <div class="ab-test-info">
+                            <h4>📋 측정 시간</h4>
+                            <p>08.25(11:00 ~ 20:00)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비교 설명 -->
+                <div class="ab-test-comparison">
+                    <h4>🔄 비교 분석</h4>
+                    <p>같은 엘리베이터에서 적용 전후(Before/After)를 실제 현장 데이터로 직접 비교해 효과를 증명합니다. 초음파 센서로 객관적으로 측정된 데이터를 통해 문 개방시간 감소를 수치로 보여줍니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 실시간 시연 섹션 -->
+    <section id="demo" class="section">
+        <div class="container">
+            <h2 class="section-title">🔴 실시간 시연</h2>
+            <p class="section-subtitle">엘리베이터 자동화 시스템의 실시간 작동을 확인하세요</p>
+
+            <div class="live-demo-container">
+                <!-- 라이브 대시보드 -->
+                <div class="live-dashboard">
+                    <div class="dashboard-header">
+                        <div class="live-indicator">
+                            <span class="live-dot"></span>
+                            <span class="live-text">LIVE</span>
+                        </div>
+                        <div class="dashboard-tabs">
+                            <button class="tab-btn active" data-tab="elevator">엘리베이터</button>
+                            <button class="tab-btn" data-tab="camera">현장 카메라</button>
+                            <button class="tab-btn" data-tab="both">동시 보기</button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <!-- 엘리베이터 탭 -->
+                        <div class="tab-content active" id="elevator-tab">
+                            <iframe id="elevatorIframe" src="https://joony167.github.io/elevator-floor/" frameborder="0" style="width: 100%; height: 500px; border: none;"></iframe>
+                            <div class="iframe-placeholder" id="elevatorPlaceholder" style="display: none;">
+                                <div class="placeholder-icon">🌐</div>
+                                <h4>실시간 엘리베이터 모니터링</h4>
+                                <p>엘리베이터 실시간 층수 정보가 표시됩니다</p>
+                            </div>
+                        </div>
+
+                        <!-- 카메라 탭 -->
+                        <div class="tab-content" id="camera-tab">
+                            <iframe id="cameraIframe"
+                                    src="https://meet.jit.si/"
+                                    frameborder="0"
+                                    allow="camera; microphone; fullscreen; display-capture; autoplay"
+                                    style="width: 100%; height: 500px; border: none;"></iframe>
+                            <div class="iframe-placeholder" id="cameraPlaceholder" style="display: none;">
+                                <div class="placeholder-icon">📹</div>
+                                <h4>실시간 현장 카메라</h4>
+                                <p>영상통화 연결 준비 중...</p>
+                            </div>
+                        </div>
+
+                        <!-- 동시 보기 탭 -->
+                        <div class="tab-content" id="both-tab">
+                            <div class="multi-view">
+                                <div class="view-item">
+                                    <div class="view-label">📍 엘리베이터</div>
+                                    <iframe src="https://joony167.github.io/elevator-floor/" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+                                </div>
+                                <div class="view-item">
+                                    <div class="view-label">🤖 AI 판단</div>
+                                    <iframe src="https://joony167.github.io/elevator-floor/judge/" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+                                </div>
+                                <div class="view-item">
+                                    <div class="view-label">🚪 초음파 문</div>
+                                    <iframe src="https://joony167.github.io/elevator-floor/door/" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+                                </div>
+                                <div class="view-item">
+                                    <div class="view-label">📹 현장 카메라</div>
+                                    <iframe src="https://meet.jit.si/"
+                                            frameborder="0"
+                                            allow="camera; microphone; fullscreen; display-capture; autoplay"
+                                            style="width: 100%; height: 100%; border: none;"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 결과 섹션 -->
+    <section id="results" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">📈 결과 및 성과</h2>
+
+            <!-- 실험 경과 -->
+            <div class="results-section">
+                <h3>🔬 실험 경과</h3>
+                <div class="photo-container">
+                    <img src="test_picture.png" alt="실험 경과" class="result-photo">
+                </div>
+            </div>
+
+            <!-- 기대효과 -->
+            <div class="results-section">
+                <h3>🎯 기대효과</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⏱️</div>
+                        <h4>불필요한 문 개방시간 감소</h4>
+                        <p>중간층 하차 후 탑승자 부재 시 대기 시간을 최소화하여 운행 효율 증대</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">👥</div>
+                        <h4>사용자 편의성 향상</h4>
+                        <p>매번 닫힘 버튼을 수동으로 누르는 번거로움 해소</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌐</div>
+                        <h4>실시간 위치 정보 제공</h4>
+                        <p>웹을 통해 엘리베이터의 현재 위치를 미리 확인 가능</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📊</div>
+                        <h4>데이터 기반 승강기 관리</h4>
+                        <p>정차 횟수 및 문 개방시간 데이터 누적으로 이용 패턴 분석 및 관리 고도화</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 추후 계획 섹션 -->
+    <section id="future" class="section">
+        <div class="container">
+            <h2 class="section-title">🚀 추후 계획</h2>
+
+            <div class="future-content">
+                <div class="future-item completed">
+                    <div class="future-status">✅ 완료</div>
+                    <h3>🏫 기숙사 협의 미팅 진행 완료(2026.08.26)</h3>
+                    <div class="photo-container">
+                        <img src="dormitory.jpg" alt="기숙사" class="result-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">🏢</div>
+                    <div class="logo-text">
+                        <span class="logo-main">Smart Elevator</span>
+                        <span class="logo-sub">Automation System</span>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>바로가기</h4>
+                    <a href="#hero">홈</a>
+                    <a href="#demo">실시간 시연</a>
+                    <a href="#features">기능 소개</a>
+                    <a href="#results">결과 및 성과</a>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>연락처</h4>
+                    <p>프로젝트 문의 및 협업</p>
+                    <a href="mailto:contact@elevator-automation.com" class="contact-link">contact@elevator-automation.com</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Elevator Automation System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="modern-script.js"></script>
+</body>
+</html>
