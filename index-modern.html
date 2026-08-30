@@ -89,7 +89,7 @@
             </div>
 
             <div class="timing-image">
-                <img src="elevator_timing_PPT.png" alt="엘리베이터 타이밍 분석" class="result-photo">
+                <img src="final_graph.png" alt="엘리베이터 타이밍 분석" class="result-photo">
             </div>
         </div>
     </section>
@@ -112,6 +112,15 @@
 
                 <!-- 목표 -->
                 <div class="goal-section">
+                    <!-- 인터뷰 녹음 -->
+                    <div class="interview-audio">
+                        <h4>🎙️ 기숙사 인터뷰 녹음</h4>
+                        <audio controls class="audio-player">
+                            <source src="기숙사 인터뷰 녹음본.m4a" type="audio/mp4">
+                            브라우저가 오디오를 지원하지 않습니다.
+                        </audio>
+                    </div>
+
                     <h3>🎯 우리의 목표</h3>
                     <div class="goal-box">
                         <p class="goal-text">엘리베이터를 효율적으로 운행시켜 대기 시간을 줄이자</p>
@@ -175,31 +184,6 @@
                 </div>
             </div>
 
-            <div class="hardware-table">
-                <h3>📋 기능별 역할</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>구분</th>
-                            <th>핵심 기술</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>기능 1</strong></td>
-                            <td>AI 비전 인식, ESP-NOW 무선 통신, 서보모터 제어</td>
-                        </tr>
-                        <tr>
-                            <td><strong>기능 2</strong></td>
-                            <td>템플릿 매칭, Supabase, GitHub Pages</td>
-                        </tr>
-                        <tr>
-                            <td><strong>기능 3</strong></td>
-                            <td>초음파 센싱, CSV/웹 데이터 로깅, BEFORE/AFTER 비교</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </section>
 
@@ -231,6 +215,19 @@
                     </div>
 
                     <div class="feature-details">
+                        <!-- 모터 이미지 -->
+                        <div class="detail-item image-full">
+                            <h4>⚙️ 서보모터 구성</h4>
+                            <img src="motor.jpg" alt="서보모터 구성도" class="feature-image">
+                        </div>
+
+                        <!-- 실시간 웹사이트 미리보기 -->
+                        <div class="detail-item web-preview-full">
+                            <h4>📺 실시간 웹사이트 미리보기</h4>
+                            <div class="web-preview">
+                                <iframe src="https://joony167.github.io/elevator-floor/judge/" frameborder="0" class="web-iframe"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,6 +253,12 @@
                     </div>
 
                     <div class="feature-details">
+                        <!-- 실시간 층수 이미지 -->
+                        <div class="detail-item image-full">
+                            <h4>🏢 실시간 층수 확인 시스템</h4>
+                            <img src="realtime_floor.jpg" alt="실시간 층수 확인 시스템" class="feature-image">
+                        </div>
+
                         <!-- 실시간 웹사이트 미리보기 -->
                         <div class="detail-item web-preview-full">
                             <h4>📺 실시간 웹사이트 미리보기</h4>
@@ -287,6 +290,19 @@
                     </div>
 
                     <div class="feature-details">
+                        <!-- 초음파 센서 이미지 -->
+                        <div class="detail-item image-full">
+                            <h4>📡 초음파 센서 시스템</h4>
+                            <img src="supersuper.jpg" alt="초음파 센서 시스템" class="feature-image">
+                        </div>
+
+                        <!-- 실시간 웹사이트 미리보기 -->
+                        <div class="detail-item web-preview-full">
+                            <h4>📺 실시간 웹사이트 미리보기</h4>
+                            <div class="web-preview">
+                                <iframe src="https://joony167.github.io/elevator-floor/door/" frameborder="0" class="web-iframe"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -323,7 +339,7 @@
                             <span class="ab-test-badge">적용</span>
                         </div>
                         <div class="ab-test-image-container">
-                            <img src="B_Test.png" alt="B (After) - 적용 상태" class="ab-test-image">
+                            <img src="final_ab.png" alt="B (After) - 적용 상태" class="ab-test-image">
                         </div>
                         <div class="ab-test-info">
                             <h4>📋 측정 시간</h4>
@@ -376,7 +392,7 @@
                         <!-- 카메라 탭 -->
                         <div class="tab-content" id="camera-tab">
                             <iframe id="cameraIframe"
-                                    src="https://meet.jit.si/elevator-demo-2024-08-24"
+                                    src="https://meet.jit.si/"
                                     frameborder="0"
                                     allow="camera; microphone; fullscreen; display-capture; autoplay"
                                     style="width: 100%; height: 500px; border: none;"></iframe>
@@ -404,7 +420,7 @@
                                 </div>
                                 <div class="view-item">
                                     <div class="view-label">📹 현장 카메라</div>
-                                    <iframe src="https://meet.jit.si/elevator-demo-2024-08-24"
+                                    <iframe src="https://meet.jit.si/"
                                             frameborder="0"
                                             allow="camera; microphone; fullscreen; display-capture; autoplay"
                                             style="width: 100%; height: 100%; border: none;"></iframe>
@@ -427,36 +443,6 @@
                 <h3>🔬 실험 경과</h3>
                 <div class="photo-container">
                     <img src="test_picture.png" alt="실험 경과" class="result-photo">
-                </div>
-            </div>
-
-            <!-- 현장 테스트 -->
-            <div class="results-section">
-                <h3>📍 현장 실증 및 대시보드</h3>
-
-                <div class="test-results">
-                    <h4>📊 A/B 테스트 검증 체계</h4>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>구분</th>
-                                <th>조건</th>
-                                <th>측정 항목</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>A (기존)</strong></td>
-                                <td>애드온 미적용 상태</td>
-                                <td>하루 동안 정차당 문 개방시간 및 누적 시간</td>
-                            </tr>
-                            <tr>
-                                <td><strong>B (적용)</strong></td>
-                                <td>AI 문닫힘 보조 및 서보모터 동작</td>
-                                <td>하루 동안 개방시간</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
 

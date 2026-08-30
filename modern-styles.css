@@ -927,6 +927,47 @@ body {
     border: none;
 }
 
+.feature-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+.image-full {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.image-full h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+/* 인터뷰 오디오 스타일 */
+.interview-audio {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: var(--background-alt);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.interview-audio h4 {
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-size: 1.125rem;
+}
+
+.audio-player {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
 /* ============================================
    실시간 시연 섹션
    ============================================ */
